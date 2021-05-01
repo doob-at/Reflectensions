@@ -9,7 +9,7 @@ namespace Reflectensions.Helper
 {
     public static class TypeHelper
     {
-        public static IReadOnlyDictionary<string, string> KeywordMap { get; } = new Dictionary<string, string>
+        internal static IReadOnlyDictionary<string, string> KeywordMap { get; } = new Dictionary<string, string>
         {
             // Value Types
             ["bool"] = "System.Boolean",
