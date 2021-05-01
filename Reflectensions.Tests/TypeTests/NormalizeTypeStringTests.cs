@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Reflectensions.Helper;
+using Xunit;
+
+namespace Reflectensions.Tests.TypeTests
+{
+    public class NormalizeTypeStringTests
+    {
+        [Theory]
+        [InlineData("string", "System.String")]
+        [InlineData("int", "System.Int32")]
+        [InlineData("bool", "System.Boolean")]
+        [InlineData("dynamic", "System.Object")]
+        [InlineData("System.String", "System.String")]
+        [InlineData("System.Int32", "System.Int32")]
+        [InlineData("System.Boolean", "System.Boolean")]
+        [InlineData("System.Object", "System.Object")]
+        public void NormalizeSimpleString(string typeString, string expectedType)
+        {
+
+
+            var type = TypeHelper.NormalizeTypeName(typeString);
+            Assert.Equal(expectedType, type);
+
+        }
+
+        [Theory]
+        [InlineData("double", "System.Double")]
+        [InlineData("number", "System.Double")]
+        public void NormalizeSimpleStringWithCustomMapping(string typeString, string expectedType)
+        {
+
+            var cMap = new Dictionary<string, string>
+            {
+                ["number"] = "double"
+            };
+
+            var type = TypeHelper.NormalizeTypeName(typeString, cMap);
+            Assert.Equal(expectedType, type);
+
+        }
+
+        [Theory]
+        [InlineData("string[]", "System.String[]")]
+        [InlineData("int[][]", "System.Int32[][]")]
+        [InlineData("bool[]", "System.Boolean[]")]
+        [InlineData("dynamic[][][]", "System.Object[][][]")]
+        [InlineData("System.String[]", "System.String[]")]
+        [InlineData("System.Int32[][]", "System.Int32[][]")]
+        [InlineData("System.Boolean[]", "System.Boolean[]")]
+        [InlineData("System.Object[][][]", "System.Object[][][]")]
+        public void NormalizeArrayString(string typeString, string expectedType)
+        {
+
+
+            var type = TypeHelper.NormalizeTypeName(typeString);
+            Assert.Equal(expectedType, type);
+
+        }
+
+
+        [Theory]
+        [InlineData("System.Collections.Generic.Dictionary`2[System.String, System.Object]", "System.Collections.Generic.Dictionary`2[System.String, System.Object]")]
+        [InlineData("System.Collections.Generic.Dictionary`2[string, object]", "System.Collections.Generic.Dictionary`2[System.String, System.Object]")]
+        [InlineData("System.Collections.Generic.Dictionary`2[System.Collections.Generic.List<string>, System.Collections.Generic.IReadOnlyCollection`1[Guid[]]]", "System.Collections.Generic.Dictionary`2[System.Collections.Generic.List`1[System.String], System.Collections.Generic.IReadOnlyCollection`1[System.Guid[]]]")]
+        [InlineData("System.Collections.Generic.Dictionary<string, double>", "System.Collections.Generic.Dictionary`2[System.String, System.Double]")]
+        public void NormalizeGenericStringType(string typeString, string expectedType)
+        {
+
+
+            var type = TypeHelper.NormalizeTypeName(typeString);
+            Assert.Equal(expectedType, type);
+
+        }
+    }
+}
