@@ -9,8 +9,8 @@ Reflectensions is a library to make it easier to work with C# Reflection and var
 ## NormalizeTypeName
 
 ```csharp
-public static string NormalizeTypeName(string typeName)
-public static string NormalizeTypeName(string typeName, IDictionary<string, string> customTypeMapping)
+public static string NormalizeTypeName(string typeName);
+public static string NormalizeTypeName(string typeName, IDictionary<string, string> customTypeMapping);
 ```
 
 Normalizing complex type names to runtime friendly C# type names.
@@ -53,8 +53,8 @@ TypeHelper.NormalizeTypeName(c,customTypeMapping);
 ## FindType
 
 ```csharp
-public static Type? FindType(string typename)
-public static Type? FindType(string typename, IDictionary<string, string> customTypeMapping)
+public static Type? FindType(string typename);
+public static Type? FindType(string typename, IDictionary<string, string> customTypeMapping);
 
 ```
 
