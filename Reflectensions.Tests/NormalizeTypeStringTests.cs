@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Reflectensions.Helper;
 using Xunit;
 
-namespace Reflectensions.Tests.TypeTests
+namespace Reflectensions.Tests
 {
     public class NormalizeTypeStringTests
     {

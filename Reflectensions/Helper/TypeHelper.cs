@@ -9,29 +9,7 @@ namespace Reflectensions.Helper
 {
     public static class TypeHelper
     {
-        internal static IReadOnlyDictionary<string, string> KeywordMap { get; } = new Dictionary<string, string>
-        {
-            // Value Types
-            ["bool"] = "System.Boolean",
-            ["byte"] = "System.Byte",
-            ["sbyte"] = "System.SByte",
-            ["char"] = "System.Char",
-            ["decimal"] = "System.Decimal",
-            ["double"] = "System.Double",
-            ["float"] = "System.Single",
-            ["int"] = "System.Int32",
-            ["uint"] = "System.UInt32",
-            ["long"] = "System.Int64",
-            ["ulong"] = "System.UInt64",
-            ["short"] = "System.Int16",
-            ["ushort"] = "System.UInt16",
-
-            // Reference Types
-            ["object"] = "System.Object",
-            ["string"] = "System.String",
-            ["dynamic"] = "System.Object"
-        };
-
+        
         /// <summary>
         /// Find a type from string
         /// </summary>
@@ -146,7 +124,7 @@ namespace Reflectensions.Helper
             if (!isGeneric)
             {
 
-                if (KeywordMap.TryGetValue(typeName, out var tn))
+                if (TypeLookupHelper.TypeKeywordTable.TryGetValue(typeName, out var tn))
                 {
                     typeName = tn;
                 }
