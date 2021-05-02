@@ -18,9 +18,5 @@ namespace Reflectensions.ExtensionMethods
             return new ObjectReflection(reflectionObject);
         }
 
-        
-
-
-
     }
 }

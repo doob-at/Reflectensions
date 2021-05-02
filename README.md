@@ -223,7 +223,7 @@ public static bool HasAttribute(this Type type, Type attributeType, bool inherit
 public static bool IsStatic(this Type type);
 #endregion
 
-#region Get Operator Methods;
+#region Get Operator Methods
 public static IEnumerable<MethodInfo> GetImplicitOperatorMethods(this Type type, bool throwOnError = true);
 public static IEnumerable<MethodInfo> GetExplicitOperatorMethods(this Type type, bool throwOnError = true);
 public static IEnumerable<MethodInfo> GetImplicitOperatorMethods<T>(bool throwOnError = true);
@@ -237,5 +237,53 @@ public static MethodInfo? GetExplicitCastMethodTo(this Type fromType, Type toTyp
 public static int InheritFromClassLevel(this Type type, Type from, int? maximumLevel = null);
 public static int InheritFromClassLevel(this Type type, string from, int? maximumLevel = null);
 public static int InheritFromClassLevel<T>(this Type type, int? maximumLevel = null);
+
+```
+
+## Object Extensions
+
+ExtensionMethods for the `object` type are special.  
+To prevent that those ExtensionMethods appears on all types which inherit from `object`(which are almost all...) there is ONE special Method called `Reflect()`.  
+
+```csharp
+public static ObjectReflection Reflect(this object reflectionObject);
+```
+
+From there you have access to the ExtensionMethods which are avsailable to `object` types.
+
+```csharp
+public static bool EqualsToAnyOf(this ObjectReflection objectReflection, params object[] equalsTo);
+public static bool ToBoolean(this ObjectReflection objectReflection, params object[] trueValues);
+public static bool IsImplicitCastableTo(this ObjectReflection objectReflection, Type type);
+public static bool IsImplicitCastableTo<T>(this ObjectReflection objectReflection);
+
+// tries to switch the type of an object
+public static bool TryAs(this ObjectReflection objectReflection, Type type, out object? outValue);
+public static bool TryAs<T>(this ObjectReflection objectReflection, out T? outValue);
+public static object? As(this ObjectReflection objectReflection, Type type);
+public static T? As<T>(this ObjectReflection objectReflection);
+
+// tries to cast on object
+// - use TryAs Methods to switch type if possible
+// - uses an ExtensinMehtod from this lib to `convert` the object, fro example `string.ToGuid()`
+// - search for a suitable implicit operator Method
+public static bool TryTo(this ObjectReflection objectReflection, Type type, out object? outValue);
+public static object? To(this ObjectReflection objectReflection, Type type, object? defaultValue);
+public static object? To(this ObjectReflection objectReflection, Type type);
+public static bool TryTo<T>(this ObjectReflection objectReflection, out T? outValue);
+public static  T? To<T>(this ObjectReflection objectReflection, T? defaultValue);
+public static  T? To<T>(this ObjectReflection objectReflection);
+
+public static object? GetPropertyValue(this ObjectReflection objectReflection, string name, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance);
+public static T? GetPropertyValue<T>(this ObjectReflection objectReflection, string name, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance);
+public static void SetPropertyValue(this ObjectReflection objectReflection, string path, object value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance);
+
+```
+
+
+```csharp
+
+var dtString = "2021-03-21T15:50:17+00:00";
+DateTime date = dtString.Reflect().To<DateTime>();
 
 ```
