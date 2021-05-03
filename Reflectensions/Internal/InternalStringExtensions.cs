@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Reflectensions.Internal {
     internal static class InternalStringExtensions {
 
-        internal static IEnumerable<string> SplitGenericArguments(this string value) {
+        public static string Repeat(this string value, int times)
+        {
+            return new StringBuilder().Insert(0, value, times).ToString();
+        }
+
+        public static IEnumerable<string> SplitGenericArguments(this string value) {
             var parts = new List<string>();
             var parenLevel = 0;
             var lastPos = 0;

@@ -75,6 +75,39 @@ var type = TypeHelper.FindType(typeString, cMap);
 ```
 
 
+
+# Invokehelper
+
+Helper to invoke Methods in several ways
+
+```csharp
+public static void InvokeVoidMethod(object? instance, MethodInfo methodInfo, params object[] parameters);
+public static T? InvokeMethod<T>(object? instance, MethodInfo methodInfo, params object[] parameters);
+public static async Task InvokeVoidMethodAsync(object? instance, MethodInfo methodInfo, params object[] parameters);
+public static async Task<T?> InvokeMethodAsync<T>(object? instance, MethodInfo methodInfo, params object[] parameters);
+
+public static void InvokeGenericVoidMethod(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
+public static void InvokeGenericVoidMethod<TArg>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static void InvokeGenericVoidMethod<TArg1, TArg2>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static void InvokeGenericVoidMethod<TArg1, TArg2, TArg3>(object instance, MethodInfo methodInfo, params object[] parameters);
+
+public static object? InvokeGenericMethod(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
+public static TResult? InvokeGenericMethod<TResult>(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
+public static TResult? InvokeGenericMethod<TArg, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static TResult? InvokeGenericMethod<TArg1, TArg2, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static TResult? InvokeGenericMethod<TArg1, TArg2, TArg3, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
+
+public static Task InvokeGenericVoidMethodAsync(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
+public static Task InvokeGenericVoidMethodAsync<TArg>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static Task InvokeGenericVoidMethodAsync<TArg1, TArg2>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static Task InvokeGenericVoidMethodAsync<TArg1, TArg2, TArg3>(object instance, MethodInfo methodInfo, params object[] parameters);
+
+public static Task<TResult?> InvokeGenericMethodAsync<TResult>(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
+public static Task<TResult?> InvokeGenericMethodAsync<TArg, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static Task<TResult?> InvokeGenericMethodAsync<TArg1, TArg2, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
+public static Task<TResult?> InvokeGenericMethodAsync<TArg1, TArg2, TArg3, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
+```
+
 # ExtensionMethods
 
 There are several ExtensionMethods for a few Types.  
@@ -135,55 +168,6 @@ public static bool HasReturnType(this MethodInfo methodInfo, Type returnType);
 public static bool IsIndexerProperty(this PropertyInfo propertyInfo);
 public static bool IsPublic(this PropertyInfo propertyInfo);
 public static IEnumerable<PropertyInfo> WhichIsIndexerProperty(this IEnumerable<PropertyInfo> propertyInfos);
-```
-
-
-## String Extensions
-
-```csharp
-public static string Repeat(this string value, int times);
-public static string[] Split(this string value, string split, StringSplitOptions options);
-public static string[] Split(this string value, string split, bool removeEmptyEntries = false);
-public static string Trim(this string value, params string[] trimCharacters);
-public static string? TrimToNull(this string? value);
-public static string RemoveEmptyLines(this string value);
-
-#region StringIs
-public static bool IsNullOrWhiteSpace(this string value);
-public static bool IsNumeric(this string value);
-public static bool IsInt(this string value);
-public static bool IsLong(this string value);
-public static bool IsDouble(this string value);
-public static bool IsDateTime(this string value, string? customFormat = null);
-public static bool IsBoolean(this string value);
-public static bool IsValidIp(this string value);
-public static bool IsBase64Encoded(this string value);
-public static bool IsLowerCase(this string value);
-public static bool IsUpperCase(this string value);
-private static string DomainMapper(Match match);
-public static Boolean IsValidEmailAddress(this string value);
-public static bool IsGuid(this string value);
-#endregion;
-
-#region StringTo
-public static string? ToNull(this string value);
-public static int ToInt(this string value);
-public static int? ToNullableInt(this string? value);
-public static decimal ToDecimal(this string value);
-public static decimal? ToNullableDecimal(this string value);
-public static float ToFloat(this string value);
-public static float? ToNullableFloat(this string value);
-public static long ToLong(this string value);
-public static long? ToNullableLong(this string value);
-public static double ToDouble(this string value);
-public static double? ToNullableDouble(this string value);
-public static bool ToBoolean(this string value);
-public static DateTime? ToNullableDateTime(this string value, string? customFormat = null);
-public static DateTime ToDateTime(this string value, string? customFormat = null);
-public static string EncodeToBase64(this string value);
-public static string DecodeFromBase64(this string value);
-public static Guid ToGuid(this string value);
-#endregion
 ```
 
 ## IEnumerable<Type> Extensions

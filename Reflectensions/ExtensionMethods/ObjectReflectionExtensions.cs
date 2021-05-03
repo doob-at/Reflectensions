@@ -113,9 +113,9 @@ namespace Reflectensions.ExtensionMethods
             {
                 if (value is string str)
                 {
-                    if (str.IsGuid())
+                    if(Guid.TryParse(str, out var g))
                     {
-                        outValue = str.ToGuid();
+                        outValue = g;
                         return true;
                     }
                     else
