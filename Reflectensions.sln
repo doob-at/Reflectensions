@@ -7,12 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions", "Reflecten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflectensions.Tests", "Reflectensions.Tests\Reflectensions.Tests.csproj", "{8505BCCA-E5D2-47E5-B83A-3395D74A0DD2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{E120D774-307E-4FC2-9534-4B53930E80DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E120D774-307E-4FC2-9534-4B53930E80DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E120D774-307E-4FC2-9534-4B53930E80DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{062F24ED-C13B-4C24-A642-FCB414A2471B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{062F24ED-C13B-4C24-A642-FCB414A2471B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{062F24ED-C13B-4C24-A642-FCB414A2471B}.Release|Any CPU.ActiveCfg = Release|Any CPU
