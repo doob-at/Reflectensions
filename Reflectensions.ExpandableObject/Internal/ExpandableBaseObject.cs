@@ -6,9 +6,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-
 using Reflectensions.ExtensionMethods;
-
 
 namespace Reflectensions.Internal
 {

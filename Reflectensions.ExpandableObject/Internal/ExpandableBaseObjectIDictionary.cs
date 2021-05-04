@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Reflectensions.Internal {
     public abstract partial class ExpandableBaseObject: IDictionary<string, object> {

@@ -136,7 +136,7 @@ Currently just one Method which tells you if the Method is an ExtensionMethod.
 Which means that the Method is declared in a static class, and the first parameter of this Method has the `this` modifier.  
 
 
-## IEnumerable<MethodInfo> Extensions
+## IEnumerable\<MethodInfo\> Extensions
 
 ```csharp
 public static IEnumerable<MethodInfo> WithName(this IEnumerable<MethodInfo> methodInfos, string name, StringComparison stringComparison = StringComparison.CurrentCulture);
@@ -170,7 +170,7 @@ public static bool IsPublic(this PropertyInfo propertyInfo);
 public static IEnumerable<PropertyInfo> WhichIsIndexerProperty(this IEnumerable<PropertyInfo> propertyInfos);
 ```
 
-## IEnumerable<Type> Extensions
+## IEnumerable\<Type\> Extensions
 
 ```csharp
 public static IEnumerable<Type> WithAttribute<T>(this IEnumerable<Type> types, bool inherit = false) where T : Attribute;

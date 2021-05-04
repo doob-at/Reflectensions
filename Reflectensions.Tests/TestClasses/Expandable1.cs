@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Reflectensions.Classes;
 
 namespace Reflectensions.Tests.TestClasses {
     public class Expandable1: ExpandableObject {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Reflectensions.Classes;
 
-namespace Reflectensions.ExtensionMethods {
+namespace Reflectensions {
     public static class ExpandableObjectExtensions {
 
         public static Dictionary<string, object?> AsDictionary(this ExpandableObject expandableObject, bool omitNullValues = false) {
