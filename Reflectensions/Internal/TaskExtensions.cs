@@ -7,7 +7,7 @@ using Reflectensions.ExtensionMethods;
 
 namespace Reflectensions.Internal
 {
-    public static class TaskExtensions
+    internal static class TaskExtensions
     {
 
         public static async Task<TResult?> ConvertToTaskOf<TResult>(this Task task, bool throwOnError = true, TResult? returnOnError = default)

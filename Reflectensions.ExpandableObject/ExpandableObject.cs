@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Reflectensions.ExtensionMethods;
 using Reflectensions.Internal;
 
-namespace Reflectensions.Classes {
+namespace Reflectensions {
 
     public class ExpandableObject : ExpandableBaseObject {
         public ExpandableObject() : base() {
