@@ -20,6 +20,5 @@ jobs:
     - name: Nuke Build
       run: ./build.ps1 Push
       env: 
-        NugetApiUrl: "https://f.feedz.io/doob/dev/nuget/index.json"
-        NugetApiKey: ${{ secrets.FEEDZAPIKEY }}
-        NugetSymbolSource: "https://f.feedz.io/doob/dev/symbols"
+        NugetApiUrl: "https://api.nuget.org/v3/index.json"
+        NugetApiKey: ${{ secrets.NUGETAPIKEY }}

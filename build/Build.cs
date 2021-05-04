@@ -24,8 +24,8 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [Parameter] string NugetApiUrl = "https://api.nuget.org/v3/index.json"; //default
-    [Parameter] string NugetSymbolSource = "https://f.feedz.io/doob/dev/symbols"; //default
+    [Parameter] string NugetApiUrl = "https://f.feedz.io/doob-at/dev/nuget/index.json"; //default
+    [Parameter] string NugetSymbolSource;
     [Parameter] string NugetApiKey;
 
     [Solution] readonly Solution Solution;
@@ -97,12 +97,17 @@ class Build : NukeBuild
                 .Where(x => !x.EndsWith("symbols.nupkg"))
                 .ForEach(x =>
                 {
-                    DotNetNuGetPush(s => s
+                    var nugetPushSettings = new DotNetNuGetPushSettings()
                         .SetTargetPath(x)
-                        .SetSymbolSource(NugetSymbolSource)
                         .SetSource(NugetApiUrl)
-                        .SetApiKey(NugetApiKey)
-                    );
+                        .SetApiKey(NugetApiKey);
+
+                    if (!string.IsNullOrWhiteSpace(NugetSymbolSource))
+                    {
+                        nugetPushSettings = nugetPushSettings.SetSymbolSource(NugetSymbolSource);
+                    }
+
+                    DotNetNuGetPush(nugetPushSettings);
                 });
         });
 }
