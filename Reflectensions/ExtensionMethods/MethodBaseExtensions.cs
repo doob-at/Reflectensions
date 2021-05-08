@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
 
-namespace Reflectensions.ExtensionMethods {
+namespace doob.Reflectensions.ExtensionMethods {
     public static class MethodBaseExtensions {
 
         public static bool IsExtensionMethod(this MethodBase methodInfo) {

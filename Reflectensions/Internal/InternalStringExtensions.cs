@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Reflectensions.Internal {
+namespace doob.Reflectensions.Internal {
     internal static class InternalStringExtensions {
 
         public static string Repeat(this string value, int times)

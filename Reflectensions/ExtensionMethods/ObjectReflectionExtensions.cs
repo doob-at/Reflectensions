@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Reflectensions.Classes;
-using Reflectensions.Exceptions;
+using doob.Reflectensions.Classes;
+using doob.Reflectensions.Exceptions;
 
-namespace Reflectensions.ExtensionMethods
+namespace doob.Reflectensions.ExtensionMethods
 {
     public static class ObjectReflectionExtensions
     {

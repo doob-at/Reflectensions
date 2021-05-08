@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Reflectensions.ExtensionMethods;
-using Reflectensions.Internal;
+using doob.Reflectensions.ExtensionMethods;
+using doob.Reflectensions.Internal;
 
-namespace Reflectensions.Helper
+namespace doob.Reflectensions.Helper
 {
 
 

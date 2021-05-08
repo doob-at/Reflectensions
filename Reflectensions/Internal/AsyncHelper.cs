@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Reflectensions.Internal
+namespace doob.Reflectensions.Internal
 {
     internal static class AsyncHelper
     {

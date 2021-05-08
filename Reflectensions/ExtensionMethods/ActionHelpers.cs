@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Reflectensions.ExtensionMethods
+namespace doob.Reflectensions.ExtensionMethods
 {
     public static class ActionExtensions
     {

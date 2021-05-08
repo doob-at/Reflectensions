@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace Reflectensions.ExtensionMethods
+namespace doob.Reflectensions.ExtensionMethods
 {
     public static class EnumExtensions
     {

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
-using Reflectensions.ExtensionMethods;
+using doob.Reflectensions.ExtensionMethods;
 using Xunit;
 
 namespace Reflectensions.Tests {

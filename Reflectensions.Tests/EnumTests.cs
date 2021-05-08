@@ -1,5 +1,5 @@
 ﻿using System;
-using Reflectensions.ExtensionMethods;
+using doob.Reflectensions.ExtensionMethods;
 using Reflectensions.Tests.TestEnums;
 using Xunit;
 using Xunit.Abstractions;

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Reflectensions.Helper;
+using doob.Reflectensions.Helper;
 using Xunit;
 
 namespace Reflectensions.Tests

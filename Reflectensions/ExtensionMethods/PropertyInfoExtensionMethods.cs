@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Reflectensions.ExtensionMethods
+namespace doob.Reflectensions.ExtensionMethods
 {
     public static class PropertyInfoExtensionMethods
     {
