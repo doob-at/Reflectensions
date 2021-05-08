@@ -1,4 +1,4 @@
-﻿namespace Reflectensions.Tests.TestClasses
+﻿namespace doob.Reflectensions.Tests.TestClasses
 {
     public class Car : CamouflageMode
     {

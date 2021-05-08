@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Text;
-using System.Threading.Tasks;
 using doob.Reflectensions.ExtensionMethods;
-using Reflectensions.Tests.TestClasses;
+using doob.Reflectensions.Tests.TestClasses;
 using Xunit;
 
-namespace Reflectensions.Tests
+namespace doob.Reflectensions.Tests
 {
     public class ActionTests
     {

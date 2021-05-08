@@ -1,9 +1,9 @@
 ﻿using System;
 using doob.Reflectensions.ExtensionMethods;
-using Reflectensions.Tests.TestClasses;
+using doob.Reflectensions.Tests.TestClasses;
 using Xunit;
 
-namespace Reflectensions.Tests
+namespace doob.Reflectensions.Tests
 {
     public class InheritanceTests
     {

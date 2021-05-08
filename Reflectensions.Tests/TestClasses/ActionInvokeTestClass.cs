@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Reflectensions.Tests.TestClasses
+﻿namespace doob.Reflectensions.Tests.TestClasses
 {
     public class ActionInvokeTestClass<T>
     {

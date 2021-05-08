@@ -1,4 +1,4 @@
-﻿namespace Reflectensions.Tests.TestClasses {
+﻿namespace doob.Reflectensions.Tests.TestClasses {
     public class CreateObjectTestClass<T> {
         public string Name { get; set; }
 

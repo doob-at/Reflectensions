@@ -2,7 +2,7 @@
 using doob.Reflectensions.Helper;
 using Xunit;
 
-namespace Reflectensions.Tests
+namespace doob.Reflectensions.Tests
 {
     public class NormalizeTypeStringTests
     {

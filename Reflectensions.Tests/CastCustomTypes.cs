@@ -1,10 +1,10 @@
 ﻿using System;
 using doob.Reflectensions.ExtensionMethods;
-using Reflectensions.Tests.TestClasses;
-using Reflectensions.Tests.TestEnums;
+using doob.Reflectensions.Tests.TestClasses;
+using doob.Reflectensions.Tests.TestEnums;
 using Xunit;
 
-namespace Reflectensions.Tests
+namespace doob.Reflectensions.Tests
 {
     public class CastCustomTypes
     {

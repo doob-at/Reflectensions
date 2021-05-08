@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Reflectensions.Tests.TestClasses
+namespace doob.Reflectensions.Tests.TestClasses
 {
     public class Transformer : ITransformer  {
 

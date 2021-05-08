@@ -1,4 +1,4 @@
-﻿namespace Reflectensions.Tests.TestEnums
+﻿namespace doob.Reflectensions.Tests.TestEnums
 {
     public enum Simplest {
 

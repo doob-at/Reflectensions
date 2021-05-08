@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace Reflectensions.Tests.TestEnums
+namespace doob.Reflectensions.Tests.TestEnums
 {
     [Flags]
     public enum WithFlags {

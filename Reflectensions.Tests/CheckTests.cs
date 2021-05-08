@@ -5,7 +5,7 @@ using System.Dynamic;
 using doob.Reflectensions.ExtensionMethods;
 using Xunit;
 
-namespace Reflectensions.Tests {
+namespace doob.Reflectensions.Tests {
     public class CheckTypeTests {
 
         [Theory]
