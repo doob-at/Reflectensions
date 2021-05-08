@@ -24,7 +24,7 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [Parameter] string NugetApiUrl = "https://f.feedz.io/doob-at/dev/nuget/index.json"; //default
+    [Parameter] string NugetApiUrl = "https://f.feedz.io/doob/dev/nuget/index.json"; //default
     [Parameter] string NugetSymbolSource;
     [Parameter] string NugetApiKey;
 
