@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Reflectensions.Internal
+namespace doob.Reflectensions.Internal
 {
     internal record TypeInheritanceLevel
     {

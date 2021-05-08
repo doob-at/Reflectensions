@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Reflectensions.Helper;
-using Reflectensions.Internal;
+using doob.Reflectensions.Helper;
+using doob.Reflectensions.Internal;
 
-namespace Reflectensions.ExtensionMethods
+namespace doob.Reflectensions.ExtensionMethods
 {
     public static class TypeExtensions
     {

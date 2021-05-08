@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Reflectensions.Classes;
+﻿using doob.Reflectensions.Classes;
 
-namespace Reflectensions.ExtensionMethods
+namespace doob.Reflectensions.ExtensionMethods
 {
     public static class ObjectExtensions
     {

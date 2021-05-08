@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Reflectensions.Exceptions;
-using Reflectensions.ExtensionMethods;
 
-namespace Reflectensions.Classes
+namespace doob.Reflectensions.Classes
 {
     public class ObjectReflection
     {

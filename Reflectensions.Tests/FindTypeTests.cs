@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Reflectensions.Helper;
+using doob.Reflectensions.Helper;
 using Reflectensions.Tests.TestClasses;
 using Xunit;
 

@@ -1,7 +1,7 @@
 ﻿using System;
-using Reflectensions.ExtensionMethods;
+using doob.Reflectensions.ExtensionMethods;
 
-namespace Reflectensions.Classes {
+namespace doob.Reflectensions.Classes {
 
     public class Enum<T> where T : struct, Enum, IConvertible
     {

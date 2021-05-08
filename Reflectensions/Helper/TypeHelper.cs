@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Reflectensions.ExtensionMethods;
-using Reflectensions.Internal;
+using doob.Reflectensions.Internal;
 
-namespace Reflectensions.Helper
+namespace doob.Reflectensions.Helper
 {
     public static class TypeHelper
     {

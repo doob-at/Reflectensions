@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
-using Reflectensions.ExtensionMethods;
+using doob.Reflectensions.ExtensionMethods;
 using Reflectensions.Tests.TestClasses;
 using Xunit;
 

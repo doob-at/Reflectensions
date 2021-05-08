@@ -1,5 +1,5 @@
 ﻿using System;
-using Reflectensions.ExtensionMethods;
+using doob.Reflectensions.ExtensionMethods;
 using Xunit;
 
 namespace Reflectensions.Tests

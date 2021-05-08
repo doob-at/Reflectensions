@@ -4,6 +4,10 @@
     <TargetFrameworks>net5.0;net462</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>doob.Reflectensions.Tests</AssemblyName>
+
+    <RootNamespace>doob.Reflectensions.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Reflectensions.ExpandableObject\Reflectensions.ExpandableObject.csproj" />
     <ProjectReference Include="..\Reflectensions\Reflectensions.csproj" />
   </ItemGroup>
 

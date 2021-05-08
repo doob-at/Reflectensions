@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reflectensions.ExtensionMethods;
+﻿using System.Threading.Tasks;
+using doob.Reflectensions.ExtensionMethods;
 
-namespace Reflectensions.Internal
+namespace doob.Reflectensions.Internal
 {
     internal static class TaskExtensions
     {
