@@ -3,6 +3,10 @@ name: PreRelease Build
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+    - 'doc/**'
+    - 'readme.md'
+    - 'README.md'
 
 jobs:
   build:

@@ -3,6 +3,10 @@ name: Release Build
 on:
   release:
     types: [published]
+    paths-ignore:
+    - 'doc/**'
+    - 'readme.md'
+    - 'README.md'
 
 jobs:
   build:
