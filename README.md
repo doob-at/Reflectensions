@@ -74,58 +74,6 @@ var type = TypeHelper.FindType(typeString, cMap);
 
 ```
 
-
-
-# Invokehelper
-
-Helper to invoke Methods in several ways
-
-```csharp
-public static void InvokeVoidMethod(object? instance, MethodInfo methodInfo, params object[] parameters);
-public static T? InvokeMethod<T>(object? instance, MethodInfo methodInfo, params object[] parameters);
-public static async Task InvokeVoidMethodAsync(object? instance, MethodInfo methodInfo, params object[] parameters);
-public static async Task<T?> InvokeMethodAsync<T>(object? instance, MethodInfo methodInfo, params object[] parameters);
-
-public static void InvokeGenericVoidMethod(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
-public static void InvokeGenericVoidMethod<TArg>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static void InvokeGenericVoidMethod<TArg1, TArg2>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static void InvokeGenericVoidMethod<TArg1, TArg2, TArg3>(object instance, MethodInfo methodInfo, params object[] parameters);
-
-public static object? InvokeGenericMethod(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
-public static TResult? InvokeGenericMethod<TResult>(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
-public static TResult? InvokeGenericMethod<TArg, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static TResult? InvokeGenericMethod<TArg1, TArg2, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static TResult? InvokeGenericMethod<TArg1, TArg2, TArg3, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
-
-public static Task InvokeGenericVoidMethodAsync(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
-public static Task InvokeGenericVoidMethodAsync<TArg>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static Task InvokeGenericVoidMethodAsync<TArg1, TArg2>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static Task InvokeGenericVoidMethodAsync<TArg1, TArg2, TArg3>(object instance, MethodInfo methodInfo, params object[] parameters);
-
-public static Task<TResult?> InvokeGenericMethodAsync<TResult>(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters);
-public static Task<TResult?> InvokeGenericMethodAsync<TArg, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static Task<TResult?> InvokeGenericMethodAsync<TArg1, TArg2, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
-public static Task<TResult?> InvokeGenericMethodAsync<TArg1, TArg2, TArg3, TResult>(object instance, MethodInfo methodInfo, params object[] parameters);
-```
-
-# ExtensionMethods
-
-There are several ExtensionMethods for a few Types.  
-Most of them are self explained because aof their names...
-
-## Action Extensions
-
-```csharp
-public static T InvokeAction<T>(this Action<T> action, T? instance = default);
-public static (T1, T2) InvokeAction<T1, T2>(this Action<T1, T2> action, T1? firstInstance = default, T2? secondInstance = default);
-public static (T1, T2, T3) InvokeAction<T1, T2, T3>(this Action<T1, T2, T3> action, T1? firstInstance = default, T2? secondInstance = default, T3? thirdInstance = default)
-```
-
-If no parameter is provided, a 'default' instance is created, so you don't have to create it by yourself.  
-Just works for simple Types which have a constructor with no parameters!  
-Or you can provide one or more parameters, if the Type doesn't have a constructor with no parameters;
-
-
 ## MethodBase Extensions
 
 ```csharp
