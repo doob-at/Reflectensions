@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions.Tests", "Ref
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{E120D774-307E-4FC2-9534-4B53930E80DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflectensions.Common", "Reflectensions.Common\Reflectensions.Common.csproj", "{8197991E-40F9-402F-A055-F60F50312128}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{8505BCCA-E5D2-47E5-B83A-3395D74A0DD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E120D774-307E-4FC2-9534-4B53930E80DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E120D774-307E-4FC2-9534-4B53930E80DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8197991E-40F9-402F-A055-F60F50312128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8197991E-40F9-402F-A055-F60F50312128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8197991E-40F9-402F-A055-F60F50312128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8197991E-40F9-402F-A055-F60F50312128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
