@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using doob.Reflectensions.Classes;
 using doob.Reflectensions.Exceptions;
+using doob.Reflectensions.Helper;
 
 namespace doob.Reflectensions.ExtensionMethods
 {
@@ -180,19 +181,18 @@ namespace doob.Reflectensions.ExtensionMethods
                 return true;
             }
 
-            //if (JsonHelpers.IsAvailable())
-            //{
-            //    try
-            //    {
-            //        //var json = JsonHelpers.Json().ToJson(value);
-            //        outValue = JsonHelpers.Json().ToObject(value, type);
-            //        return true;
-            //    }
-            //    catch
-            //    {
-            //        // ignored
-            //    }
-            //}
+            if (JsonHelpers.IsAvailable())
+            {
+                try
+                {
+                    outValue = JsonHelpers.Json().ToObject(value, type);
+                    return true;
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
 
             outValue = null;
             return false;

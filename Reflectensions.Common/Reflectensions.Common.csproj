@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netstandard2.0;net472</TargetFrameworks>
-    <AssemblyName>doob.Reflectensions</AssemblyName>
+    <AssemblyName>doob.Reflectensions.Common</AssemblyName>
     <RootNamespace>doob.Reflectensions</RootNamespace>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
@@ -16,12 +16,8 @@
     <PackageProjectUrl>https://github.com/doob-at/Reflectensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/doob-at/Reflectensions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageId>doob.Reflectensions</PackageId>
-    <Product>doob.Reflectensions</Product>
+    <PackageId>doob.Reflectensions.Common</PackageId>
+    <Product>doob.Reflectensions.Common</Product>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Reflectensions.Common\Reflectensions.Common.csproj" />
-  </ItemGroup>
 
 </Project>
