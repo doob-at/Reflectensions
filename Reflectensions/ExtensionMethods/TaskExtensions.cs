@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using doob.Reflectensions.ExtensionMethods;
 
-namespace doob.Reflectensions.Internal
+namespace doob.Reflectensions.ExtensionMethods
 {
     public static class TaskExtensions
     {

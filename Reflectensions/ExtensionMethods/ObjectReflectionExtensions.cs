@@ -269,15 +269,6 @@ namespace doob.Reflectensions.ExtensionMethods
                 return true;
             }
 
-            //var method = t.GetImplicitCastMethodTo(type);
-
-            //if (method != null)
-            //{
-            //    outValue = method.Invoke(null, new[] {
-            //        value
-            //    });
-            //    return true;
-            //}
 
             if (type.IsNullableType())
             {
