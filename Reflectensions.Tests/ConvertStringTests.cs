@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using doob.Reflectensions;
 using doob.Reflectensions.Common;
 using doob.Reflectensions.ExtensionMethods;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Reflectensions.Tests
+namespace doob.Reflectensions.Tests
 {
     public class ConvertStringTests
     {
