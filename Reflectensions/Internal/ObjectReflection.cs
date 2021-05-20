@@ -1,10 +1,11 @@
 ﻿using System;
+using doob.Reflectensions.Common.Classes;
 
-namespace doob.Reflectensions.Classes
+namespace doob.Reflectensions.Internal
 {
-    public class ObjectReflection
+    public class ObjectReflection : IObjectReflection
     {
-        internal object? Value { get; }
+        private object? Value { get; }
 
         internal ObjectReflection(object? value)
         {
@@ -12,6 +13,10 @@ namespace doob.Reflectensions.Classes
         }
 
 
+        public object? GetValue()
+        {
+            return Value;
+        }
         public override bool Equals(object? obj)
         {
             return Value!.Equals(obj);

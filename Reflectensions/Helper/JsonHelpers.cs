@@ -1,5 +1,5 @@
 ﻿using System;
-using Reflectensions;
+using doob.Reflectensions.Common;
 
 namespace doob.Reflectensions.Helper
 {

@@ -271,7 +271,7 @@ namespace doob.Reflectensions.Helper
                 if (enumerable.Length > i)
                 {
 
-                    return enumerable[i].Reflect().To(p.ParameterType, false);
+                    return enumerable[i]?.Reflect().To(p.ParameterType, false);
                 }
 
                 return p.DefaultValue;

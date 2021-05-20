@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Reflectensions
+namespace doob.Reflectensions.Common
 {
     public interface IJson
     {

@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using doob.Reflectensions.Classes;
+using doob.Reflectensions.Common.Classes;
 using doob.Reflectensions.Exceptions;
 using doob.Reflectensions.Helper;
+using doob.Reflectensions.Internal;
 
 namespace doob.Reflectensions.ExtensionMethods
 {
     public static class ObjectReflectionExtensions
     {
 
-        public static bool EqualsToAnyOf(this ObjectReflection objectReflection, params object[] equalsTo)
+        public static bool EqualsToAnyOf(this IObjectReflection objectReflection, params object[] equalsTo)
         {
-            var value = objectReflection.Value;
+            var value = objectReflection.GetValue();
 
             foreach (var trueValue in equalsTo)
             {
@@ -26,9 +27,9 @@ namespace doob.Reflectensions.ExtensionMethods
             return false;
         }
 
-        public static bool ToBoolean(this ObjectReflection objectReflection, params object[] trueValues)
+        public static bool ToBoolean(this IObjectReflection objectReflection, params object[] trueValues)
         {
-            var value = objectReflection.Value;
+            var value = objectReflection.GetValue();
 
             if (value == null)
                 return false;
@@ -65,18 +66,18 @@ namespace doob.Reflectensions.ExtensionMethods
         }
 
 
-        public static bool IsImplicitCastableTo(this ObjectReflection objectReflection, Type type)
+        public static bool IsImplicitCastableTo(this IObjectReflection objectReflection, Type type)
         {
             return objectReflection.GetType().IsImplicitCastableTo(type);
         }
         
-        public static bool IsImplicitCastableTo<T>(this ObjectReflection objectReflection)
+        public static bool IsImplicitCastableTo<T>(this IObjectReflection objectReflection)
         {
             return objectReflection.GetType().IsImplicitCastableTo<T>();
         }
 
 
-        public static bool TryTo(this ObjectReflection objectReflection, Type type, out object? outValue)
+        public static bool TryTo(this IObjectReflection objectReflection, Type type, out object? outValue)
         {
 
 
@@ -108,7 +109,7 @@ namespace doob.Reflectensions.ExtensionMethods
             }
 
 
-            var value = objectReflection.Value;
+            var value = objectReflection.GetValue();
 
             if (type == typeof(Guid))
             {
@@ -199,7 +200,7 @@ namespace doob.Reflectensions.ExtensionMethods
 
         }
 
-        public static bool TryTo<T>(this ObjectReflection objectReflection, out T? outValue)
+        public static bool TryTo<T>(this IObjectReflection objectReflection, out T? outValue)
         {
 
             var result = TryTo(objectReflection, typeof(T), out var _outValue);
@@ -208,7 +209,7 @@ namespace doob.Reflectensions.ExtensionMethods
             return result;
         }
 
-        public static object? To(this ObjectReflection objectReflection, Type type, object? defaultValue)
+        public static object? To(this IObjectReflection objectReflection, Type type, object? defaultValue)
         {
 
             var result = TryTo(objectReflection, type, out var outValue);
@@ -224,7 +225,7 @@ namespace doob.Reflectensions.ExtensionMethods
 
         }
 
-        public static object? To(this ObjectReflection objectReflection, Type type)
+        public static object? To(this IObjectReflection objectReflection, Type type)
         {
 
             var result = TryTo(objectReflection, type, out var outValue);
@@ -234,20 +235,20 @@ namespace doob.Reflectensions.ExtensionMethods
             throw new InvalidCastException($"Can't cast object of Type '{objectReflection.GetType()}' to '{type}'.");
         }
 
-        public static T? To<T>(this ObjectReflection objectReflection, T? defaultValue)
+        public static T? To<T>(this IObjectReflection objectReflection, T? defaultValue)
         {
             return (T?)To(objectReflection, typeof(T), defaultValue);
         }
 
-        public static  T? To<T>(this ObjectReflection objectReflection)
+        public static  T? To<T>(this IObjectReflection objectReflection)
         {
             return (T?)To(objectReflection, typeof(T));
         }
 
 
-        public static bool TryAs(this ObjectReflection objectReflection, Type type, out object? outValue)
+        public static bool TryAs(this IObjectReflection objectReflection, Type type, out object? outValue)
         {
-            var value = objectReflection.Value;
+            var value = objectReflection.GetValue();
 
             if (value == null)
             {
@@ -285,7 +286,7 @@ namespace doob.Reflectensions.ExtensionMethods
 
         }
 
-        public static bool TryAs<T>(this ObjectReflection objectReflection, out T? outValue)
+        public static bool TryAs<T>(this IObjectReflection objectReflection, out T? outValue)
         {
             var result = TryAs(objectReflection, typeof(T), out var _outValue);
 
@@ -293,7 +294,7 @@ namespace doob.Reflectensions.ExtensionMethods
             return result;
         }
 
-        public static object? As(this ObjectReflection objectReflection, Type type)
+        public static object? As(this IObjectReflection objectReflection, Type type)
         {
 
             var result = TryAs(objectReflection, type, out var outValue);
@@ -301,7 +302,7 @@ namespace doob.Reflectensions.ExtensionMethods
 
         }
 
-        public static T? As<T>(this ObjectReflection objectReflection)
+        public static T? As<T>(this IObjectReflection objectReflection)
         {
 
             var result = TryAs<T>(objectReflection, out var outValue);
@@ -310,19 +311,19 @@ namespace doob.Reflectensions.ExtensionMethods
         }
 
 
-        public static object? GetPropertyValue(this ObjectReflection objectReflection, string name, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
+        public static object? GetPropertyValue(this IObjectReflection objectReflection, string name, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
             return GetPropertyValue<object>(objectReflection, name, bindingFlags);
         }
 
-        public static T? GetPropertyValue<T>(this ObjectReflection objectReflection, string name, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
+        public static T? GetPropertyValue<T>(this IObjectReflection objectReflection, string name, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
-            if (objectReflection.Value == null)
+            if (objectReflection.GetValue() == null)
                 throw new ArgumentNullException();
 
             var parts = name.Split('.');
 
-            var currentObject = objectReflection.Value;
+            var currentObject = objectReflection.GetValue();
 
             var processedPaths = new List<string>();
             foreach (var part in parts)
@@ -346,11 +347,11 @@ namespace doob.Reflectensions.ExtensionMethods
 
         }
 
-        public static void SetPropertyValue(this ObjectReflection objectReflection, string path, object value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
+        public static void SetPropertyValue(this IObjectReflection objectReflection, string path, object value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
             var parts = path.Split('.');
 
-            var currentObject = objectReflection.Value;
+            var currentObject = objectReflection.GetValue();
             var processedPaths = new List<string>();
 
             for (var i = 0; i < parts.Length; i++)
