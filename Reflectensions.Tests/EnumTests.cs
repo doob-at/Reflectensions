@@ -1,13 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using doob.Reflectensions;
 using doob.Reflectensions.Common;
 using Newtonsoft.Json.Converters;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Reflectensions.Tests
+namespace doob.Reflectensions.Tests
 {
     public class EnumTests
     {
