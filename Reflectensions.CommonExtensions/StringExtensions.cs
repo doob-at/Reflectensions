@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using doob.Reflectensions.Common.Helper;
 using doob.Reflectensions.Helper;
 
 namespace doob.Reflectensions.Common {
@@ -327,7 +328,7 @@ namespace doob.Reflectensions.Common {
             if (string.IsNullOrEmpty(value))
                 return null;
 
-            var toEncodeAsBytes = System.Text.Encoding.ASCII.GetBytes(value);
+            var toEncodeAsBytes = System.Text.Encoding.UTF8.GetBytes(value);
             var returnValue = Convert.ToBase64String(toEncodeAsBytes);
             return returnValue;
         }
@@ -337,7 +338,27 @@ namespace doob.Reflectensions.Common {
                 return null;
 
             var encodedDataAsBytes = Convert.FromBase64String(value);
-            var returnValue = System.Text.Encoding.ASCII.GetString(encodedDataAsBytes);
+            var returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);
+            return returnValue;
+        }
+
+        public static string EncodeToBase58(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return null;
+
+            var toEncodeAsBytes = System.Text.Encoding.UTF8.GetBytes(value);
+            var returnValue = Base58Helper.Encode(toEncodeAsBytes);
+            return returnValue;
+        }
+
+        public static string DecodeFromBase58(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return null;
+
+            var encodedDataAsBytes = Base58Helper.Decode(value);
+            var returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);
             return returnValue;
         }
 
