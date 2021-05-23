@@ -186,7 +186,7 @@ namespace doob.Reflectensions.ExtensionMethods
             {
                 try
                 {
-                    outValue = JsonHelpers.Json().ToObject(value, type);
+                    outValue = JsonHelpers.Json()?.ToObject(value, type);
                     return true;
                 }
                 catch
@@ -330,7 +330,7 @@ namespace doob.Reflectensions.ExtensionMethods
             {
 
                 processedPaths.Add(part);
-                var currentPropertyInfo = currentObject.GetType().GetProperty(part, bindingFlags);
+                var currentPropertyInfo = currentObject?.GetType().GetProperty(part, bindingFlags);
 
 
                 if (currentPropertyInfo == null)
@@ -343,7 +343,7 @@ namespace doob.Reflectensions.ExtensionMethods
 
             }
 
-            return currentObject.Reflect().To<T>();
+            return currentObject!.Reflect().To<T>();
 
         }
 

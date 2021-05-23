@@ -308,7 +308,7 @@ namespace doob.Reflectensions.Common {
                     if (!vstr.StartsWith("\"") && !vstr.EndsWith("\""))
                         vstr = $"\"{value}\"";
 
-                    dateTime = JsonHelpers.Json().ToObject<DateTime>(vstr);
+                    dateTime = JsonHelpers.Json()!.ToObject<DateTime>(vstr);
                     return dateTime;
                 } catch {
                     // ignored

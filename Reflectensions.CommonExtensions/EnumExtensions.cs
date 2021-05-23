@@ -35,10 +35,10 @@ namespace doob.Reflectensions.Common
         }
 
 
-        public static bool TryFind(this Type enumType, string value, out object result) {
+        public static bool TryFind(this Type enumType, string value, out object? result) {
             return TryFind(enumType, value, false, out result);
         }
-        public static bool TryFind(this Type enumType, string value, bool ignoreCase, out object result) {
+        public static bool TryFind(this Type enumType, string value, bool ignoreCase, out object? result) {
             var fields = enumType.GetFields();
 
             var enumValues = value.Split(',').Select(v => v.Trim()).Where(v => !String.IsNullOrWhiteSpace(v)).ToList();
@@ -57,7 +57,7 @@ namespace doob.Reflectensions.Common
                     var attribute = field.GetCustomAttribute<EnumMemberAttribute>();
                     if (attribute != null) {
                         if (attribute.Value?.Equals(val, comparsion) == true) {
-                            enums.Add(field.Name);
+                            enums.Add(field.Name!);
                             continue;
                         }
 
@@ -66,7 +66,7 @@ namespace doob.Reflectensions.Common
                     var descAttribute = field.GetCustomAttribute<DescriptionAttribute>();
                     if (descAttribute != null) {
                         if (descAttribute.Description.Equals(val, comparsion) == true) {
-                            enums.Add(field.Name);
+                            enums.Add(field.Name!);
                             continue;
                         }
 

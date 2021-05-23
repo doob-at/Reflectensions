@@ -59,14 +59,14 @@ namespace doob.Reflectensions.ExtensionMethods {
 
         }
 
-        public static Dictionary<string, object> ToBasicDotNetDictionary(this JObject jObject) {
+        public static Dictionary<string, object?>? ToBasicDotNetDictionary(this JObject? jObject) {
             if (jObject == null)
                 return null;
 
-            var dict = new Dictionary<string, object>();
+            var dict = new Dictionary<string, object?>();
 
             foreach (var kvp in jObject) {
-                if (kvp.Value.Type == JTokenType.Object) {
+                if (kvp.Value!.Type == JTokenType.Object) {
                     dict.Add(kvp.Key, ((JObject)kvp.Value).ToBasicDotNetDictionary());
                 } else {
                     dict.Add(kvp.Key, kvp.Value.ToBasicDotNetObject());
