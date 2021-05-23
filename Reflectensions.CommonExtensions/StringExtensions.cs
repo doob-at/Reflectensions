@@ -24,10 +24,10 @@ namespace doob.Reflectensions.Common {
         }
         
         public static string Trim(this string value, params string[] trimCharacters) {
-            return value?.Trim(String.Join("", trimCharacters).ToCharArray());
+            return value?.Trim(String.Join("", trimCharacters).ToCharArray()) ?? "";
         }
         
-        public static string TrimToNull(this string value) {
+        public static string? TrimToNull(this string? value) {
             if (value == null)
                 return null;
 
@@ -93,7 +93,7 @@ namespace doob.Reflectensions.Common {
 
         }
 
-        public static bool IsDateTime(this string value, string customFormat = null) {
+        public static bool IsDateTime(this string value, string? customFormat = null) {
 
             return ToNullableDateTime(value) != null;
 
@@ -105,8 +105,7 @@ namespace doob.Reflectensions.Common {
         }
 
         public static bool IsValidIp(this string value) {
-            System.Net.IPAddress ipAddress;
-            return System.Net.IPAddress.TryParse(value, out ipAddress);
+            return System.Net.IPAddress.TryParse(value, out var _);
         }
 
 
@@ -172,14 +171,14 @@ namespace doob.Reflectensions.Common {
         #endregion
 
         #region StringTo
-        public static String ToNull(this string value) {
+        public static string? ToNull(this string value) {
             return String.IsNullOrEmpty(value) ? null : value;
         }
 
         public static int ToInt(this string value) {
             return !IsInt(value) ? default : int.Parse(value);
         }
-        public static int? ToNullableInt(this string value) {
+        public static int? ToNullableInt(this string? value) {
             if (value == null)
                 return null;
 
@@ -253,7 +252,7 @@ namespace doob.Reflectensions.Common {
             return bool.Parse(value);
         }
 
-        public static DateTime? ToNullableDateTime(this string value, string customFormat = null) {
+        public static DateTime? ToNullableDateTime(this string value, string? customFormat = null) {
 
             if (String.IsNullOrWhiteSpace(value?.Trim('"')))
                 return null;
@@ -262,7 +261,7 @@ namespace doob.Reflectensions.Common {
 
             List<string> formats = new List<string>();
 
-            if (!String.IsNullOrEmpty(customFormat)) {
+            if (customFormat != null && !string.IsNullOrEmpty(customFormat)) {
                 formats.Add(customFormat);
             } else {
                 formats = new List<string>{
@@ -305,7 +304,7 @@ namespace doob.Reflectensions.Common {
 
             if (JsonHelpers.IsAvailable()) {
                 try {
-                    string vstr = value;
+                    string vstr = value!;
                     if (!vstr.StartsWith("\"") && !vstr.EndsWith("\""))
                         vstr = $"\"{value}\"";
 
@@ -320,13 +319,13 @@ namespace doob.Reflectensions.Common {
             return null;
         }
 
-        public static DateTime ToDateTime(this string value, string customFormat = null) {
+        public static DateTime ToDateTime(this string value, string? customFormat = null) {
             return ToNullableDateTime(value, customFormat) ?? throw new InvalidCastException();
         }
 
         public static string EncodeToBase64(this string value) {
             if (string.IsNullOrEmpty(value))
-                return null;
+                return "";
 
             var toEncodeAsBytes = System.Text.Encoding.UTF8.GetBytes(value);
             var returnValue = Convert.ToBase64String(toEncodeAsBytes);
@@ -335,7 +334,7 @@ namespace doob.Reflectensions.Common {
 
         public static string DecodeFromBase64(this string value) {
             if (string.IsNullOrEmpty(value))
-                return null;
+                return "";
 
             var encodedDataAsBytes = Convert.FromBase64String(value);
             var returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);
@@ -345,7 +344,7 @@ namespace doob.Reflectensions.Common {
         public static string EncodeToBase58(this string value)
         {
             if (string.IsNullOrEmpty(value))
-                return null;
+                return "";
 
             var toEncodeAsBytes = System.Text.Encoding.UTF8.GetBytes(value);
             var returnValue = Base58Helper.Encode(toEncodeAsBytes);
@@ -355,7 +354,7 @@ namespace doob.Reflectensions.Common {
         public static string DecodeFromBase58(this string value)
         {
             if (string.IsNullOrEmpty(value))
-                return null;
+                return "";
 
             var encodedDataAsBytes = Base58Helper.Decode(value);
             var returnValue = System.Text.Encoding.UTF8.GetString(encodedDataAsBytes);

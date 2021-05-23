@@ -17,7 +17,7 @@ namespace doob.Reflectensions.Common.Helper {
 		}
 
 		//Returns null if the checksum is invalid
-		public static byte[] VerifyAndRemoveCheckSum(byte[] data)
+		public static byte[]? VerifyAndRemoveCheckSum(byte[] data)
 		{
             byte[] result = ArrayHelpers.SubArray(data, 0, data.Length - CheckSumSizeInBytes);
 			byte[] givenCheckSum = ArrayHelpers.SubArray(data, data.Length - CheckSumSizeInBytes);
