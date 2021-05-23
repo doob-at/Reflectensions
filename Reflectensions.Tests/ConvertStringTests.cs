@@ -17,6 +17,7 @@ namespace doob.Reflectensions.Tests
             this._output = output;
 
             var js = JsonConvert.SerializeObject("");
+            var z = js.Length;
         }
 
 
