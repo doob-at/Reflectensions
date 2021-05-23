@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using doob.Reflectensions.Common;
 using doob.Reflectensions.ExtensionMethods;
+using Newtonsoft.Json;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -14,6 +15,8 @@ namespace doob.Reflectensions.Tests
 
         public ConvertStringTests(ITestOutputHelper output) {
             this._output = output;
+
+            var js = JsonConvert.SerializeObject("");
         }
 
 

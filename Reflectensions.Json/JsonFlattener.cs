@@ -24,28 +24,28 @@ namespace doob.Reflectensions {
         }
         
         public JObject Unflatten(IDictionary<string, object> keyValues) {
-            JContainer result = null;
+            JContainer? result = null;
             var setting = new JsonMergeSettings {
                 MergeArrayHandling = MergeArrayHandling.Merge
             };
             foreach (var pathValue in keyValues) {
                 if (result == null) {
-                    result = UnflatenSingle(pathValue);
+                    result = UnflatenSingle(pathValue!);
                 } else {
-                    result.Merge(UnflatenSingle(pathValue), setting);
+                    result.Merge(UnflatenSingle(pathValue!)!, setting);
                 }
             }
-            return result as JObject;
+            return result as JObject ?? new JObject();
         }
 
 
 
-        private JContainer UnflatenSingle(KeyValuePair<string, object> keyValue) {
+        private JContainer? UnflatenSingle(KeyValuePair<string, object?> keyValue) {
             string path = keyValue.Key;
             JToken value = keyValue.Value == null ? JValue.CreateNull() : JToken.FromObject(keyValue.Value, _jsonSerializer);
             var pathSegments = SplitPath(path);
 
-            JContainer lastItem = null;
+            JContainer? lastItem = null;
             //build from leaf to root
             foreach (var pathSegment in pathSegments.Reverse()) {
                 var type = GetJsonType(pathSegment);
@@ -86,7 +86,7 @@ namespace doob.Reflectensions {
 
         private JArray FillEmpty(JArray array, int index) {
             for (var i = 0; i <= index; i++) {
-                array.Add(null);
+                array.Add(JValue.CreateNull());
             }
             return array;
         }

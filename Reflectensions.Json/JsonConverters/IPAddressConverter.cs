@@ -12,13 +12,13 @@ namespace doob.Reflectensions.JsonConverters
             return (objectType == typeof(IPAddress));
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-            IPAddress ip = (IPAddress)value;
+            IPAddress ip = (IPAddress)value!;
             writer.WriteValue(ip.ToString());
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             JToken token = JToken.Load(reader);
             return IPAddress.Parse(token.Value<string>());

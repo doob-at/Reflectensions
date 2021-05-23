@@ -27,7 +27,7 @@ namespace doob.Reflectensions.Helper
 
             if (_jsonType != null)
             {
-                _json = (IJson)Activator.CreateInstance(_jsonType, new object[] { true });
+                _json = (IJson)Activator.CreateInstance(_jsonType, new object[] { true })!;
             }
 
         }
@@ -38,7 +38,7 @@ namespace doob.Reflectensions.Helper
             return _json != null;
         }
 
-        public static IJson Json()
+        public static IJson? Json()
         {
             Initialize();
 

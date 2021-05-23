@@ -12,9 +12,9 @@ namespace doob.Reflectensions.JsonConverters
             return (objectType == typeof(IPEndPoint));
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
-            IPEndPoint ep = (IPEndPoint)value;
+            IPEndPoint ep = (IPEndPoint)value!;
             writer.WriteStartObject();
             writer.WritePropertyName("Address");
             serializer.Serialize(writer, ep.Address);
@@ -23,11 +23,11 @@ namespace doob.Reflectensions.JsonConverters
             writer.WriteEndObject();
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             JObject jo = JObject.Load(reader);
-            IPAddress address = jo["Address"].ToObject<IPAddress>(serializer);
-            int port = jo["Port"].Value<int>();
+            IPAddress address = jo["Address"]?.ToObject<IPAddress>(serializer) ?? throw new ArgumentNullException("Address");
+            int port = jo["Port"]?.Value<int>() ?? throw new ArgumentNullException("Address");
             return new IPEndPoint(address, port);
         }
     }

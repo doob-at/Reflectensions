@@ -34,7 +34,7 @@ namespace doob.Reflectensions {
             return RegisterJsonConverter(jsonConverter?.GetType());
         }
 
-        public Json RegisterJsonConverter(Type jsonConverterType, int? index = null) {
+        public Json RegisterJsonConverter(Type? jsonConverterType, int? index = null) {
             if (jsonConverterType == null)
                 return this;
 
@@ -64,10 +64,10 @@ namespace doob.Reflectensions {
         }
 
         public Json UnRegisterJsonConverter(JsonConverter jsonConverter) {
-            return UnRegisterJsonConverter(jsonConverter?.GetType());
+            return UnRegisterJsonConverter(jsonConverter.GetType());
         }
 
-        public Json UnRegisterJsonConverter(Type jsonConverterType) {
+        public Json UnRegisterJsonConverter(Type? jsonConverterType) {
 
             if (jsonConverterType == null)
                 return this;
@@ -92,10 +92,10 @@ namespace doob.Reflectensions {
                 throw new ArgumentException($"'{contractResolverType}' does not implement interface '{typeof(IContractResolver)}'");
             }
 
-            return SetContractResolver((IContractResolver)Activator.CreateInstance(contractResolverType));
+            return SetContractResolver((IContractResolver)Activator.CreateInstance(contractResolverType)!);
         }
 
-        public Json SetContractResolver(IContractResolver contractResolver) {
+        public Json SetContractResolver(IContractResolver? contractResolver) {
             JsonSerializerSettings.ContractResolver = contractResolver;
             return this;
         }
@@ -190,36 +190,36 @@ namespace doob.Reflectensions {
 
 
 
-        public T ToObject<T>(string json) {
+        public T? ToObject<T>(string json) {
             var jToken = ToJToken(json);
             return ToObject<T>(jToken);
         }
 
-        public T ToObject<T>(object @object) {
+        public T? ToObject<T>(object @object) {
             var jToken = ToJToken(@object);
             return ToObject<T>(jToken);
         }
 
-        public object ToObject(string json, Type type) {
+        public object? ToObject(string json, Type type) {
             var jToken = ToJToken(json);
             return ToObject(jToken, type);
         }
 
-        public object ToObject(object @object, Type type) {
+        public object? ToObject(object @object, Type type) {
             var jToken = ToJson(@object);
             return ToObject(jToken, type);
         }
 
-        public object ToObject(JToken jToken, Type type) {
+        public object? ToObject(JToken jToken, Type type) {
             return jToken?.ToObject(type, JsonSerializer);
         }
-        public T ToObject<T>(JToken jToken) {
+        public T? ToObject<T>(JToken jToken) {
             return jToken != null ? jToken.ToObject<T>(JsonSerializer) : default(T);
         }
 
 
 
-        public Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(object data) {
+        public Dictionary<TKey, TValue>? ToDictionary<TKey, TValue>(object? data) where TKey : notnull {
             if (data == null)
                 return null;
 
@@ -228,7 +228,7 @@ namespace doob.Reflectensions {
 
         }
 
-        public Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(string json) {
+        public Dictionary<TKey, TValue>? ToDictionary<TKey, TValue>(string? json) where TKey : notnull {
             if (json == null)
                 return null;
 
@@ -237,7 +237,7 @@ namespace doob.Reflectensions {
         }
 
 
-        private Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(JToken jToken) {
+        private Dictionary<TKey, TValue>? ToDictionary<TKey, TValue>(JToken jToken) where TKey : notnull {
 
             if (jToken.Type != JTokenType.Object)
                 throw new ArgumentException($"The object is of type '{jToken.Type}', and therefore can't be converted to a Dictionary");
@@ -247,7 +247,7 @@ namespace doob.Reflectensions {
 
         }
 
-        public Dictionary<string, object> ToDictionary(object data) {
+        public Dictionary<string, object>? ToDictionary(object? data) {
             if (data == null)
                 return null;
 
@@ -256,7 +256,7 @@ namespace doob.Reflectensions {
 
         }
 
-        public Dictionary<string, object> ToDictionary(string json) {
+        public Dictionary<string, object>? ToDictionary(string? json) {
             if (json == null)
                 return null;
 
@@ -264,7 +264,7 @@ namespace doob.Reflectensions {
             return ToDictionary(jObject);
         }
 
-        public Dictionary<string, object> ToDictionary(JObject jObject) {
+        public Dictionary<string, object>? ToDictionary(JObject? jObject) {
             if (jObject == null)
                 return null;
 
@@ -357,7 +357,7 @@ namespace doob.Reflectensions {
 
         }
 
-        public Dictionary<string, object?> ToBasicDotNetDictionary(JObject jObject) {
+        public Dictionary<string, object?>? ToBasicDotNetDictionary(JObject? jObject) {
             if (jObject == null)
                 return null;
 
@@ -373,7 +373,7 @@ namespace doob.Reflectensions {
             return dict;
         }
 
-        public IEnumerable<object?>? ToBasicDotNetObjectEnumerable(JArray jArray, bool ignoreErrors = false) {
+        public IEnumerable<object?>? ToBasicDotNetObjectEnumerable(JArray? jArray, bool ignoreErrors = false) {
             return jArray?.Select(ToBasicDotNetObject).ToList();
         }
 
@@ -381,7 +381,7 @@ namespace doob.Reflectensions {
             return jArray?.Select(ToObject<T>).ToList();
         }
 
-        public T FromJsonStreamToObject<T>(Stream stream) {
+        public T? FromJsonStreamToObject<T>(Stream? stream) {
             if (stream == null || stream.CanRead == false)
                 return default;
 

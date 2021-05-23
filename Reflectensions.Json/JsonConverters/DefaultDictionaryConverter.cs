@@ -17,7 +17,7 @@ namespace doob.Reflectensions.JsonConverters {
             return objectType == typeof(object) || base.CanConvert(objectType);
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
             if (reader.TokenType == JsonToken.StartObject || reader.TokenType == JsonToken.Null)
                 return base.ReadJson(reader, objectType, existingValue, serializer);
 
