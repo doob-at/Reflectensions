@@ -19,7 +19,7 @@ namespace doob.Reflectensions {
                     if (o.GetType().IsGenericTypeOf(typeof(KeyValuePair<,>))) {
                         var key = o.Reflect().GetPropertyValue("Key")!.ToString()!;
                         var value = o.Reflect().GetPropertyValue("Value");
-                        this[key] = value!;
+                        this[key] = value;
                     }
                     
                 }
@@ -35,7 +35,7 @@ namespace doob.Reflectensions {
 
         }
 
-        public ExpandableObject(IDictionary<string, object> dictionary) {
+        public ExpandableObject(IDictionary<string, object?> dictionary) {
 
             foreach (var keyValuePair in dictionary) {
                 this[keyValuePair.Key] = keyValuePair.Value;
@@ -43,7 +43,7 @@ namespace doob.Reflectensions {
 
         }
 
-        public ExpandableObject(Dictionary<string, object> dictionary) {
+        public ExpandableObject(Dictionary<string, object?> dictionary) {
 
             foreach (var keyValuePair in dictionary) {
                 this[keyValuePair.Key] = keyValuePair.Value;
@@ -61,7 +61,7 @@ namespace doob.Reflectensions {
         }
 
 
-        public static implicit operator ExpandableObject(Dictionary<string, object> dictionary) {
+        public static implicit operator ExpandableObject(Dictionary<string, object?> dictionary) {
 
             return new ExpandableObject(dictionary);
 
