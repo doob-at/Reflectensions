@@ -211,30 +211,25 @@ namespace doob.Reflectensions.Internal
         }
 
 
-        public object this[string key]
+        public object? this[string key]
         {
             get
             {
 
                 if (TryGetProperty(_instance, key, out var result))
                 {
-#pragma warning disable CS8603 // Possible null reference return.
                     return result;
-#pragma warning restore CS8603 // Possible null reference return.
                 }
 
                 if (__properties.TryGetValue(key, out var prop))
                 {
-#pragma warning disable CS8603 // Possible null reference return.
                     return prop;
-#pragma warning restore CS8603 // Possible null reference return.
                 }
 
                 throw new KeyNotFoundException(key);
             }
             set
             {
-
 
                 if (!TrySetProperty(_instance, key, value))
                 {
@@ -263,12 +258,12 @@ namespace doob.Reflectensions.Internal
 
         }
 
-        public bool Contains(KeyValuePair<string, object> item)
+        public bool Contains(KeyValuePair<string, object?> item)
         {
             return Contains(item, true);
         }
 
-        public bool Contains(KeyValuePair<string, object> item, bool includeInstanceProperties)
+        public bool Contains(KeyValuePair<string, object?> item, bool includeInstanceProperties)
         {
             var res = __properties.ContainsKey(item.Key);
             if (res)

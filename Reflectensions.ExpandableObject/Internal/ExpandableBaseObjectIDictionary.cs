@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace doob.Reflectensions.Internal {
-    public abstract partial class ExpandableBaseObject: IDictionary<string, object> {
-        public IEnumerator<KeyValuePair<string, object>> GetEnumerator() {
+    public abstract partial class ExpandableBaseObject: IDictionary<string, object?> {
+        public IEnumerator<KeyValuePair<string, object?>> GetEnumerator() {
             return GetProperties().GetEnumerator()!;
         }
 
@@ -13,7 +13,7 @@ namespace doob.Reflectensions.Internal {
             return GetEnumerator();
         }
 
-        public void Add(KeyValuePair<string, object> item) {
+        public void Add(KeyValuePair<string, object?> item) {
             this[item.Key] = item.Value;
         }
 
@@ -21,11 +21,11 @@ namespace doob.Reflectensions.Internal {
             throw new NotImplementedException();
         }
         
-        public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex) {
+        public void CopyTo(KeyValuePair<string, object?>[] array, int arrayIndex) {
             throw new NotImplementedException();
         }
 
-        public bool Remove(KeyValuePair<string, object> item) {
+        public bool Remove(KeyValuePair<string, object?> item) {
             if (IsInstanceProperty(item.Key)) {
                 throw new Exception($"'{item.Key}' is an instance property, therefore it can't be removed!");
             }
@@ -37,7 +37,7 @@ namespace doob.Reflectensions.Internal {
 
         public bool IsReadOnly { get; } = false;
 
-        public void Add(string key, object value) {
+        public void Add(string key, object? value) {
             this[key] = value;
         }
 
@@ -57,6 +57,6 @@ namespace doob.Reflectensions.Internal {
         }
 
         public ICollection<string> Keys => GetKeys().ToList();
-        public ICollection<object> Values => GetValues().ToList()!;
+        public ICollection<object?> Values => GetValues().ToList()!;
     }
 }
