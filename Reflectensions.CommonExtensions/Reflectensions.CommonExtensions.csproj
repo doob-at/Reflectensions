@@ -24,8 +24,4 @@
     <ProjectReference Include="..\Reflectensions\Reflectensions.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helper\" />
-  </ItemGroup>
-
 </Project>

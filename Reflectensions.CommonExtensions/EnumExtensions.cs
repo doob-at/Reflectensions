@@ -35,10 +35,10 @@ namespace doob.Reflectensions.Common
         }
 
 
-        public static bool TryFind(this Type enumType, string value, out object? result) {
+        public static bool TryFind(Type enumType, string value, out object? result) {
             return TryFind(enumType, value, false, out result);
         }
-        public static bool TryFind(this Type enumType, string value, bool ignoreCase, out object? result) {
+        public static bool TryFind(Type enumType, string value, bool ignoreCase, out object? result) {
             var fields = enumType.GetFields();
 
             var enumValues = value.Split(',').Select(v => v.Trim()).Where(v => !String.IsNullOrWhiteSpace(v)).ToList();
