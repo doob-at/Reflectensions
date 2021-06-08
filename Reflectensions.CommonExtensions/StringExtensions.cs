@@ -39,6 +39,11 @@ namespace doob.Reflectensions.Common {
             return val;
         }
 
+        public static bool Match(this string value, string matchString, bool ignoreCase = true, bool invert = false)
+        {
+            return WildcardHelper.Match(value, matchString, ignoreCase, invert);
+        }
+
         #region StringIs
         public static bool IsNullOrWhiteSpace(this string value) {
             return String.IsNullOrWhiteSpace(value);
@@ -302,6 +307,7 @@ namespace doob.Reflectensions.Common {
                 return dateTime;
             }
 
+            
             if (JsonHelpers.IsAvailable()) {
                 try {
                     string vstr = value!;
