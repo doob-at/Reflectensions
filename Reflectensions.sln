@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions.Invoke", "Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions.CommonExtensions", "Reflectensions.CommonExtensions\Reflectensions.CommonExtensions.csproj", "{0DE4D477-200D-43E3-9412-C8821798FBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflectensions.ExpandableObject", "Reflectensions.ExpandableObject\Reflectensions.ExpandableObject.csproj", "{C088EB9D-B83A-443E-AD31-19D3B711735F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions.ExpandableObject", "Reflectensions.ExpandableObject\Reflectensions.ExpandableObject.csproj", "{C088EB9D-B83A-443E-AD31-19D3B711735F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflectensions.CodeDefinition", "Reflectensions.CodeDefinition\Reflectensions.CodeDefinition.csproj", "{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{C088EB9D-B83A-443E-AD31-19D3B711735F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C088EB9D-B83A-443E-AD31-19D3B711735F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C088EB9D-B83A-443E-AD31-19D3B711735F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
