@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace doob.Reflectensions.Helper
 {
-    internal static class AsyncHelper
+    public static class SimpleAsyncHelper
     {
         private static readonly TaskFactory _taskFactory = new
             TaskFactory(CancellationToken.None,

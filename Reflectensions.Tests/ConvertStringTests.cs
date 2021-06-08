@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using doob.Reflectensions.Common;
 using doob.Reflectensions.ExtensionMethods;
+using doob.Reflectensions.Helper;
 using Newtonsoft.Json;
 using Xunit;
 using Xunit.Abstractions;
@@ -16,6 +17,7 @@ namespace doob.Reflectensions.Tests
         public ConvertStringTests(ITestOutputHelper output) {
             this._output = output;
 
+            
             var js = JsonConvert.SerializeObject("");
             var z = js.Length;
         }
@@ -28,8 +30,12 @@ namespace doob.Reflectensions.Tests
         [InlineData("915148798.75")]
         [InlineData("December 17, 1995 03:24:00")]
 
-        public void ConvertNullableToDateTime(string value) {
+        public void ConvertNullableToDateTime(string value)
+        {
 
+            var jsonAvailable = JsonHelpers.IsAvailable();
+
+            Assert.True(jsonAvailable);
             var dt = value.ToNullableDateTime();
 
             _output.WriteLine(dt.ToString());
