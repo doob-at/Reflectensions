@@ -30,7 +30,7 @@ namespace doob.Reflectensions.Helper
 
             if (isTaskVoid || isTaskReturn)
             {
-                AsyncHelper.RunSync(() => (Task)methodInfo.Invoke(instance, enumerable)!);
+                SimpleAsyncHelper.RunSync(() => (Task)methodInfo.Invoke(instance, enumerable)!);
                 return;
             }
 
@@ -65,7 +65,7 @@ namespace doob.Reflectensions.Helper
             if (isTaskReturn)
             {
 
-                returnObject = AsyncHelper.RunSync(() => ((Task)methodInfo.Invoke(instance, enumerable)!).ConvertToTaskOf<T?>());
+                returnObject = SimpleAsyncHelper.RunSync(() => ((Task)methodInfo.Invoke(instance, enumerable)!).ConvertToTaskOf<T?>());
 
             }
             else
