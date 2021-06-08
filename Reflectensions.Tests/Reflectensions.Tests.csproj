@@ -10,7 +10,7 @@
     <RootNamespace>doob.Reflectensions.Tests</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0|AnyCPU'">
+  <PropertyGroup>
     <Optimize>false</Optimize>
   </PropertyGroup>
 

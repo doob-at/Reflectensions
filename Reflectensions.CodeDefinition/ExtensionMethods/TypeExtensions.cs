@@ -1,0 +1,116 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+
+namespace doob.Reflectensions.CodeDefinition.ExtensionMethods
+{
+    internal static class TypeExtensions
+    {
+        public static Modifier GetModifier(this Type type)
+        {
+            var attributes = type.Attributes;
+
+            if ((attributes & TypeAttributes.Public) == TypeAttributes.Public)
+            {
+                return Modifier.Public;
+            }
+
+            if ((attributes & TypeAttributes.NestedFamORAssem) == TypeAttributes.NestedFamORAssem)
+            {
+                return Modifier.ProtectedInternal;
+            }
+
+            if ((attributes & TypeAttributes.NestedFamily) == TypeAttributes.NestedFamily)
+            {
+                return Modifier.Protected;
+            }
+
+            if ((attributes & TypeAttributes.NestedAssembly) == TypeAttributes.NestedAssembly)
+            {
+                return Modifier.Internal;
+            }
+
+            if ((attributes & TypeAttributes.NestedFamANDAssem) == TypeAttributes.NestedFamANDAssem)
+            {
+                return Modifier.PrivateProtected;
+            }
+
+            if ((attributes & TypeAttributes.NestedPrivate) == TypeAttributes.NestedPrivate)
+            {
+                return Modifier.Private;
+            }
+
+            return Modifier.None;
+        }
+
+        public static Kind GetKind(this Type type)
+        {
+            if (type.IsClass)
+            {
+                return Kind.Class;
+            }
+            
+            if (type.IsInterface)
+            {
+                return Kind.Interface;
+            }
+            
+            if (type.IsEnum)
+            {
+                return Kind.Enum;
+            }
+            
+            if (type.IsValueType)
+            {
+                return Kind.Struct;
+            }
+
+            return Kind.None;
+        }
+
+
+        public static bool IsGenericTypeParameter(this Type type)
+        {
+            return type.IsGenericParameter && (object)type.DeclaringMethod == null;
+        }
+
+        public static IEnumerable<Type> GetDirectInterfaces(this Type type)
+        {
+            var allInterfaces = new List<Type>();
+            var childInterfaces = new List<Type>();
+
+            foreach (var i in type.GetInterfaces())
+            {
+                allInterfaces.Add(i);
+                foreach (var ii in i.GetInterfaces())
+                    childInterfaces.Add(ii);
+            }
+
+            if (type.HasInspectableBaseType())
+            {
+                foreach (var baseTypeInterface in type.BaseType.GetInterfaces())
+                {
+                    childInterfaces.Add(baseTypeInterface);
+                }
+            }
+
+            return allInterfaces.Except(childInterfaces);
+        }
+
+        internal static bool HasInspectableBaseType(this Type type)
+        {
+            var baseType = type.BaseType;
+            if (baseType == null)
+                return false;
+
+            if (baseType == typeof(object))
+                return false;
+
+            if (baseType == typeof(ValueType))
+                return false;
+
+            return true;
+        }
+    }
+}
