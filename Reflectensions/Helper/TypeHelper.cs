@@ -156,5 +156,20 @@ namespace doob.Reflectensions.Helper
             return typeName;
         }
 
+
+        public static bool HasInspectableBaseType(Type type)
+        {
+            var baseType = type.BaseType;
+            if (baseType == null)
+                return false;
+
+            if (baseType == typeof(object))
+                return false;
+
+            if (baseType == typeof(ValueType))
+                return false;
+
+            return true;
+        }
     }
 }

@@ -281,5 +281,31 @@ namespace doob.Reflectensions.ExtensionMethods
         }
 
 
+        public static IEnumerable<Type> GetDirectInterfaces(this Type type)
+        {
+            var allInterfaces = new List<Type>();
+            var childInterfaces = new List<Type>();
+
+            
+            foreach (var i in type.GetInterfaces())
+            {
+                allInterfaces.Add(i);
+                foreach (var ii in i.GetInterfaces())
+                    childInterfaces.Add(ii);
+            }
+
+            if (TypeHelper.HasInspectableBaseType(type))
+            {
+                foreach (var baseTypeInterface in type.BaseType.GetInterfaces())
+                {
+                    childInterfaces.Add(baseTypeInterface);
+                }
+            }
+
+            return allInterfaces.Except(childInterfaces);
+        }
+
+        
+
     }
 }

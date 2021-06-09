@@ -88,7 +88,7 @@ namespace doob.Reflectensions.CodeDefinition.Definitions
                     tdinfo.GenericTypeArguments.Select(t => TypeDefinition.Create(t)).ToArray();
             }
 
-            if (type.HasInspectableBaseType())
+            if (TypeHelper.HasInspectableBaseType(type))
             {
                 typeDefinition.BaseType = TypeDefinition.Create(type.BaseType);
             }
