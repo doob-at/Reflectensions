@@ -286,21 +286,7 @@ namespace doob.Reflectensions.ExtensionMethods
             var allInterfaces = new List<Type>();
             var childInterfaces = new List<Type>();
 
-            static bool HasInspectableBaseType(Type type)
-            {
-                var baseType = type.BaseType;
-                if (baseType == null)
-                    return false;
-
-                if (baseType == typeof(object))
-                    return false;
-
-                if (baseType == typeof(ValueType))
-                    return false;
-
-                return true;
-            }
-
+            
             foreach (var i in type.GetInterfaces())
             {
                 allInterfaces.Add(i);
@@ -308,7 +294,7 @@ namespace doob.Reflectensions.ExtensionMethods
                     childInterfaces.Add(ii);
             }
 
-            if (HasInspectableBaseType(type))
+            if (TypeHelper.HasInspectableBaseType(type))
             {
                 foreach (var baseTypeInterface in type.BaseType.GetInterfaces())
                 {
@@ -318,6 +304,8 @@ namespace doob.Reflectensions.ExtensionMethods
 
             return allInterfaces.Except(childInterfaces);
         }
+
+        
 
     }
 }

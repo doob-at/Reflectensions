@@ -75,42 +75,5 @@ namespace doob.Reflectensions.CodeDefinition.ExtensionMethods
             return type.IsGenericParameter && (object)type.DeclaringMethod == null;
         }
 
-        public static IEnumerable<Type> GetDirectInterfaces(this Type type)
-        {
-            var allInterfaces = new List<Type>();
-            var childInterfaces = new List<Type>();
-
-            foreach (var i in type.GetInterfaces())
-            {
-                allInterfaces.Add(i);
-                foreach (var ii in i.GetInterfaces())
-                    childInterfaces.Add(ii);
-            }
-
-            if (type.HasInspectableBaseType())
-            {
-                foreach (var baseTypeInterface in type.BaseType.GetInterfaces())
-                {
-                    childInterfaces.Add(baseTypeInterface);
-                }
-            }
-
-            return allInterfaces.Except(childInterfaces);
-        }
-
-        internal static bool HasInspectableBaseType(this Type type)
-        {
-            var baseType = type.BaseType;
-            if (baseType == null)
-                return false;
-
-            if (baseType == typeof(object))
-                return false;
-
-            if (baseType == typeof(ValueType))
-                return false;
-
-            return true;
-        }
     }
 }
