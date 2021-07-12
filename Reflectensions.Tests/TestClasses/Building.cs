@@ -46,7 +46,7 @@ namespace doob.Reflectensions.Tests.TestClasses
         public async Task<int> CountFloorsAsync(TimeSpan? delay = null) {
             return await Task.Run(async () => {
                 if (delay.HasValue) {
-                    await Task.Delay(delay.Value).ConfigureAwait(true);
+                    await Task.Delay(delay.Value);
                 }
                 return _floors;
             });
@@ -56,7 +56,7 @@ namespace doob.Reflectensions.Tests.TestClasses
         public async Task<int> CountFloorsAsync1(TimeSpan? delay, string text) {
             return await Task.Run(async () => {
                 if (delay.HasValue) {
-                    await Task.Delay(delay.Value).ConfigureAwait(true);
+                    await Task.Delay(delay.Value);
                 }
                 return _floors;
             });
