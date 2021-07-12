@@ -23,9 +23,19 @@ namespace doob.Reflectensions.ExtensionMethods
             return methodInfos.Where(m => m.HasReturnType(returnType));
         }
 
+        public static IEnumerable<MethodInfo> WithParametersLengthOf(this IEnumerable<MethodInfo> methodInfos, int length)
+        {
+            return methodInfos.Where(m => m.HasParametersLengthOf(length));
+        }
+
         public static IEnumerable<MethodInfo> WithParametersOfType(this IEnumerable<MethodInfo> methodInfos, params Type[] types)
         {
             return methodInfos.Where(m => m.HasParametersOfType(types));
+        }
+
+        public static IEnumerable<MethodInfo> WithGenericArgumentsLengthOf(this IEnumerable<MethodInfo> methodInfos, int length)
+        {
+            return methodInfos.Where(m => m.HasGenericArgumentsLengthOf(length));
         }
 
         public static IEnumerable<MethodInfo> WithGenericArgumentsOfType(this IEnumerable<MethodInfo> methodInfos, params Type[] types)

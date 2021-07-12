@@ -60,7 +60,7 @@ namespace doob.Reflectensions.Tests
 
             IEnumerable<string> ienum = new List<string>() { "eins", "zwei", "drei" };
 
-            List<string> t = await Task.Run(() => ienum).ConvertToTaskOf<List<string>>();
+            List<string> t = await Task.Run(() => ienum).CastToTaskOf<List<string>>();
 
             _output.WriteLine(new Json().ToJson(t, true));
         }

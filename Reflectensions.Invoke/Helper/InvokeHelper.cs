@@ -65,12 +65,48 @@ namespace doob.Reflectensions.Helper
             if (isTaskReturn)
             {
 
-                returnObject = SimpleAsyncHelper.RunSync(() => ((Task)methodInfo.Invoke(instance, enumerable)!).ConvertToTaskOf<T?>());
+                returnObject = SimpleAsyncHelper.RunSync(() => ((Task)methodInfo.Invoke(instance, enumerable)!).CastToTaskOf<T?>());
 
             }
             else
             {
                 returnObject = methodInfo.Invoke(instance, enumerable)!.Reflect().To<T?>();
+            }
+
+            return returnObject;
+        }
+        public static object InvokeMethod(object? instance, MethodInfo methodInfo, params object[] parameters)
+        {
+
+            if (methodInfo.IsStatic)
+            {
+                instance = null;
+            }
+            else if (instance is null or Type)
+            {
+                instance = Activator.CreateInstance(methodInfo.ReflectedType!);
+            }
+
+            var enumerable = BuildParametersArray(methodInfo, parameters);
+            var isTaskReturn = methodInfo.ReturnType.IsGenericType && methodInfo.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
+
+            var returnType = methodInfo.ReturnType;
+            if (isTaskReturn)
+            {
+                returnType = methodInfo.ReturnType.GenericTypeArguments[0];
+            }
+
+            object returnObject;
+
+            if (isTaskReturn)
+            {
+
+                returnObject = SimpleAsyncHelper.RunSync(() => ((Task)methodInfo.Invoke(instance, enumerable)!).CastToTaskOf<object>());
+
+            }
+            else
+            {
+                returnObject = methodInfo.Invoke(instance, enumerable);
             }
 
             return returnObject;
@@ -149,6 +185,52 @@ namespace doob.Reflectensions.Helper
             return returnObject.Reflect().To<T?>();
 
         }
+        public static async Task<object> InvokeMethodAsync(object? instance, MethodInfo methodInfo, params object[] parameters)
+        {
+
+            if (methodInfo.IsStatic)
+            {
+                instance = null;
+            }
+            else if (instance is null or Type)
+            {
+                instance = Activator.CreateInstance(methodInfo.ReflectedType!);
+            }
+
+            var enumerable = BuildParametersArray(methodInfo, parameters);
+            var isTaskVoid = methodInfo.ReturnType == typeof(Task);
+            if (isTaskVoid)
+            {
+                await (Task)methodInfo.Invoke(instance, enumerable)!;
+                return default;
+            }
+
+            var isTaskReturn = methodInfo.ReturnType.IsGenericType && methodInfo.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
+
+            var returnType = methodInfo.ReturnType;
+            if (isTaskReturn)
+            {
+                returnType = methodInfo.ReturnType.GenericTypeArguments[0];
+            }
+
+            object returnObject;
+
+            if (isTaskReturn)
+            {
+
+                var task = (Task)methodInfo.Invoke(instance, enumerable)!;
+                await task;
+                var resultProperty = typeof(Task<>).MakeGenericType(methodInfo.ReturnType.GetGenericArguments().First()).GetProperty("Result")!;
+                returnObject = resultProperty.GetValue(task)!;
+            }
+            else
+            {
+                returnObject = await Task.Run(() => methodInfo.Invoke(instance, enumerable)!);
+            }
+
+            return returnObject;
+
+        }
 
         #region Generic Methods
 
@@ -182,7 +264,7 @@ namespace doob.Reflectensions.Helper
         public static object? InvokeGenericMethod(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters)
         {
             methodInfo = methodInfo.MakeGenericMethod(genericArguments.ToArray());
-            return InvokeMethod<object>(instance, methodInfo, parameters);
+            return InvokeMethod(instance, methodInfo, parameters);
         }
 
         public static TResult? InvokeGenericMethod<TResult>(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters)
@@ -235,6 +317,12 @@ namespace doob.Reflectensions.Helper
 
         #region WithTaskOfT
 
+        public static Task<object> InvokeGenericMethodAsync(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters)
+        {
+            methodInfo = methodInfo.MakeGenericMethod(genericArguments.ToArray());
+            return InvokeMethodAsync(instance, methodInfo, parameters);
+        }
+
         public static Task<TResult?> InvokeGenericMethodAsync<TResult>(object instance, MethodInfo methodInfo, IEnumerable<Type> genericArguments, params object[] parameters)
         {
             methodInfo = methodInfo.MakeGenericMethod(genericArguments.ToArray());
@@ -260,8 +348,7 @@ namespace doob.Reflectensions.Helper
 
         #endregion
 
-
-
+        
         private static object?[] BuildParametersArray(MethodInfo methodInfo, IEnumerable<object> parameters)
         {
             var enumerable = parameters as object[] ?? parameters.ToArray();
