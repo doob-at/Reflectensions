@@ -28,6 +28,11 @@ namespace doob.Reflectensions.ExtensionMethods
             return methodInfos.Where(m => m.HasParametersOfType(types));
         }
 
+        public static IEnumerable<MethodInfo> WithGenericArgumentsOfType(this IEnumerable<MethodInfo> methodInfos, params Type[] types)
+        {
+            return methodInfos.Where(m => m.HasGenericArguments(types));
+        }
+
         public static IEnumerable<MethodInfo> WithAttribute<T>(this IEnumerable<MethodInfo> methodInfos, bool inherit = false) where T : Attribute
         {
             return methodInfos.Where(m => m.HasAttribute<T>(inherit));

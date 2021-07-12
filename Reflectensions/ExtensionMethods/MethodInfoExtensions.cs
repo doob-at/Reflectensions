@@ -107,5 +107,42 @@ namespace doob.Reflectensions.ExtensionMethods
             return methodInfo.ReturnType == returnType;
         }
 
+        public static bool HasGenericArgumentsLengthOf(this MethodInfo methodInfo, int genericArgumentsLength)
+        {
+            if (methodInfo == null)
+            {
+                throw new ArgumentNullException(nameof(methodInfo));
+            }
+
+            var methodInfoGenericArguments = methodInfo.GetGenericArguments();
+
+            return methodInfoGenericArguments.Length == genericArgumentsLength;
+        }
+
+
+        public static bool HasGenericArguments(this MethodInfo methodInfo, Type[] types)
+        {
+            if (methodInfo == null)
+            {
+                throw new ArgumentNullException(nameof(methodInfo));
+            }
+
+            if (!HasGenericArgumentsLengthOf(methodInfo, types.Length))
+                return false;
+
+            var match = true;
+            var methodParameters = methodInfo.GetGenericArguments();
+            for (var i = 0; i < methodParameters.Length; i++)
+            {
+                if (methodParameters[i] != types[i])
+                {
+                    match = false;
+                    break;
+                }
+            }
+
+            return match;
+        }
+
     }
 }
