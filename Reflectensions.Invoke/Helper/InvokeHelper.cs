@@ -206,13 +206,7 @@ namespace doob.Reflectensions.Helper
             }
 
             var isTaskReturn = methodInfo.ReturnType.IsGenericType && methodInfo.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
-
-            var returnType = methodInfo.ReturnType;
-            if (isTaskReturn)
-            {
-                returnType = methodInfo.ReturnType.GenericTypeArguments[0];
-            }
-
+            
             object returnObject;
 
             if (isTaskReturn)
@@ -221,7 +215,7 @@ namespace doob.Reflectensions.Helper
                 var task = (Task)methodInfo.Invoke(instance, enumerable)!;
                 await task;
                 var resultProperty = typeof(Task<>).MakeGenericType(methodInfo.ReturnType.GetGenericArguments().First()).GetProperty("Result")!;
-                returnObject = resultProperty.GetValue(task)!;
+                returnObject = resultProperty.GetValue(task);
             }
             else
             {
@@ -358,7 +352,7 @@ namespace doob.Reflectensions.Helper
                 if (enumerable.Length > i)
                 {
 
-                    return enumerable[i]?.Reflect().To(p.ParameterType, false);
+                    return enumerable[i]?.Reflect().To(p.ParameterType);
                 }
 
                 return p.DefaultValue;

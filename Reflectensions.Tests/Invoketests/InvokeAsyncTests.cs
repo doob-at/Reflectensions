@@ -96,5 +96,16 @@ namespace doob.Reflectensions.Tests.Invoketests {
             Assert.Equal(7, floorCount);
         }
 
+
+        [Fact]
+        public async Task InvokeAsyncObject()
+        {
+
+            var testObj = new InvokeAsyncTestClass();
+
+            var t = await testObj.GetNameAsync();
+
+        }
+
     }
 }

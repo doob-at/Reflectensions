@@ -8,5 +8,7 @@ namespace doob.Reflectensions.ExtensionMethods
             await task.ContinueWith(t => 
                 t.Reflect().GetPropertyValue<TResult>("Result")
             );
+
+
     }
 }

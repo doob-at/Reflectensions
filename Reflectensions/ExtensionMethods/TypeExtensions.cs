@@ -55,6 +55,10 @@ namespace doob.Reflectensions.ExtensionMethods
 
         public static bool ImplementsInterface(this Type type, Type interfaceType)
         {
+            if (interfaceType.IsGenericType || interfaceType.IsGenericTypeDefinition)
+            {
+                interfaceType = interfaceType.GetGenericTypeDefinition();
+            }
             return type.GetInterfaces()
                 .Select(i => i.IsGenericType ? i.GetGenericTypeDefinition() : i)
                 .Contains(interfaceType);
