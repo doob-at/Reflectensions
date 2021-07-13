@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using doob.Reflectensions.ExtensionMethods;
-using doob.Reflectensions.Internal;
 
 namespace doob.Reflectensions.Helper
 {
@@ -206,7 +205,7 @@ namespace doob.Reflectensions.Helper
             }
 
             var isTaskReturn = methodInfo.ReturnType.IsGenericType && methodInfo.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
-            
+
             object returnObject;
 
             if (isTaskReturn)
@@ -215,7 +214,7 @@ namespace doob.Reflectensions.Helper
                 var task = (Task)methodInfo.Invoke(instance, enumerable)!;
                 await task;
                 var resultProperty = typeof(Task<>).MakeGenericType(methodInfo.ReturnType.GetGenericArguments().First()).GetProperty("Result")!;
-                returnObject = resultProperty.GetValue(task);
+                returnObject = resultProperty.GetValue(task)!;
             }
             else
             {
