@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using doob.Reflectensions.ExtensionMethods;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -14,6 +15,17 @@ namespace doob.Reflectensions.JsonConverters {
             // in addition to handling ExpandoObject
             // we want to handle the deserialization of dict value
             // which is of type object
+
+            var type = objectType;
+            while (type != null)
+            {
+                if (type.FullName?.Equals("doob.Reflectensions.Internal.ExpandableBaseObject") == true)
+                    return false;
+
+                type = type.BaseType;
+            }
+            
+
             return objectType == typeof(object) || base.CanConvert(objectType);
         }
 
