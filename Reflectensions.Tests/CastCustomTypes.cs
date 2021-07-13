@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using doob.Reflectensions.ExtensionMethods;
 using doob.Reflectensions.Tests.TestClasses;
 using doob.Reflectensions.Tests.TestEnums;
@@ -103,6 +104,16 @@ namespace doob.Reflectensions.Tests
             var val = value.Reflect().ToBoolean(truevalues);
 
             Assert.Equal(assert, val);
+
+        }
+
+
+        [Fact]
+        public void FromArrayToIEnumerable()
+        {
+
+            var arr = new object[0];
+            var ien = arr.Reflect().To<IEnumerable<object>>();
 
         }
     }
