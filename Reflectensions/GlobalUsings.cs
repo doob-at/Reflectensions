@@ -1,0 +1,11 @@
+﻿global using System;
+global using System.Collections.Concurrent;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Reflection;
+global using System.Text;
+global using System.Text.RegularExpressions;
+global using doob.Reflectensions.ExtensionMethods;
+global using doob.Reflectensions.Helper;
+global using doob.Reflectensions.Internal;
+global using doob.Reflectensions.CodeDefinition.ExtensionMethods;

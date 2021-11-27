@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace doob.Reflectensions.ExtensionMethods {
     public static class MethodBaseExtensions {

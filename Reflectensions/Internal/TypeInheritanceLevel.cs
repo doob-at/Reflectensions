@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace doob.Reflectensions.Internal
+﻿namespace doob.Reflectensions.Internal
 {
     internal record TypeInheritanceLevel
     {

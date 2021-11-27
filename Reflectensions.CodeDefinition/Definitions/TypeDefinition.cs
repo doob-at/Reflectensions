@@ -16,7 +16,7 @@ namespace doob.Reflectensions.CodeDefinition.Definitions
         public Kind? Kind { get; set; }
         public string Name { get; set; }
 
-        public TypeDefinition[] GenericArguments { get; set; } = new TypeDefinition[0];
+        public TypeDefinition[]? GenericArguments { get; set; } = new TypeDefinition[0];
         public TypeDefinition? BaseType { get; set; }
 
         public TypeDefinition[] ImplementedInterfaces { get; set; } = new TypeDefinition[0];
@@ -136,6 +136,7 @@ namespace doob.Reflectensions.CodeDefinition.Definitions
 
             td.GenericArguments = match.Groups["genericArguments"].Value.TrimToNull()?.SplitGenericArguments().Select(g => TypeHelper.NormalizeTypeName(g))
                 .Select(Parse).ToArray();
+
             //if (match.Groups["genericArguments"].Value.TrimToNull() != null)
             //{
             //    var parameterParts = Regex.Split(match.Groups["genericArguments"].Value, @"\,(?![^<]*>)").Select(p => p.TrimToNull()).Where(p => p != null).ToList();

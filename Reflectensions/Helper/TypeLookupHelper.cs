@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace doob.Reflectensions.Helper
+﻿namespace doob.Reflectensions.Helper
 {
     public static class TypeLookupHelper
     {

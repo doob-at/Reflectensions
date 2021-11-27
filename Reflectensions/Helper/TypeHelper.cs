@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using doob.Reflectensions.Internal;
-
-namespace doob.Reflectensions.Helper
+﻿namespace doob.Reflectensions.Helper
 {
     public static class TypeHelper
     {
@@ -171,5 +165,7 @@ namespace doob.Reflectensions.Helper
 
             return true;
         }
+
+        
     }
 }

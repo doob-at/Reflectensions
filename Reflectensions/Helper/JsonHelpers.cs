@@ -1,5 +1,4 @@
-﻿using System;
-using doob.Reflectensions.Common;
+﻿using doob.Reflectensions.Common;
 
 namespace doob.Reflectensions.Helper
 {

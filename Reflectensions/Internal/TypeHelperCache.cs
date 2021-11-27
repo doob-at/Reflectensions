@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace doob.Reflectensions.Internal
+﻿namespace doob.Reflectensions.Internal
 {
     internal static class TypeHelperCache
     {

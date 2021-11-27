@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace doob.Reflectensions.Exceptions
+﻿namespace doob.Reflectensions.Exceptions
 {
     public class PropertyNotFoundException: Exception
     {

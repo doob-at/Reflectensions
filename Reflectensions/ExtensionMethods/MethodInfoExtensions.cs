@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-
-namespace doob.Reflectensions.ExtensionMethods
+﻿namespace doob.Reflectensions.ExtensionMethods
 {
     public static class MethodInfoExtensions
     {

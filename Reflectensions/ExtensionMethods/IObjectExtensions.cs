@@ -1,5 +1,4 @@
 ﻿using doob.Reflectensions.Common.Classes;
-using doob.Reflectensions.Internal;
 
 namespace doob.Reflectensions.ExtensionMethods
 {
