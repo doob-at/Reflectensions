@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netstandard2.0;net472</TargetFrameworks>
+    <TargetFrameworks>net7.0;netstandard2.0;net472</TargetFrameworks>
     <AssemblyName>doob.Reflectensions</AssemblyName>
     <RootNamespace>doob.Reflectensions</RootNamespace>
     <LangVersion>9</LangVersion>
