@@ -95,8 +95,8 @@ namespace doob.Reflectensions.Tests.Invoketests {
 
             var type2 = TypeHelper.FindType("doob.Reflectensions.Json");
             var inst2 = Activator.CreateInstance(type2);
-            var method2 = type.GetMethod("ToJson");
-            var json2 = InvokeHelper.InvokeMethod<string>(inst2, method, building, true);
+            var method2 = type2.GetMethod("ToJson");
+            var json2 = InvokeHelper.InvokeMethod<string>(inst2, method2, building, true);
             _output.WriteLine(json2);
 
 
