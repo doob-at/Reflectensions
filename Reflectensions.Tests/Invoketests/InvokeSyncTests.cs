@@ -50,7 +50,7 @@ namespace doob.Reflectensions.Tests.Invoketests {
             InvokeHelper.InvokeVoidMethod(building, method, _delay);
             sw.Stop();
 
-            Assert.True(sw.Elapsed >= _delay);
+            Assert.True(sw.Elapsed.Ticks >= _delay.Ticks);
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace doob.Reflectensions.Tests.Invoketests {
             var floorCount = InvokeHelper.InvokeMethod<int>(building, method, _delay);
             sw.Stop();
 
-            Assert.True(sw.Elapsed >= _delay);
+            Assert.True(sw.Elapsed.Ticks >= _delay.Ticks);
             Assert.Equal(7, floorCount);
         }
 
@@ -77,7 +77,7 @@ namespace doob.Reflectensions.Tests.Invoketests {
             var floorCount = InvokeHelper.InvokeMethod<decimal>(building, method, _delay);
             sw.Stop();
 
-            Assert.True(sw.Elapsed >= _delay);
+            Assert.True(sw.Elapsed.Ticks >= _delay.Ticks);
             Assert.Equal(7, floorCount);
         }
 
