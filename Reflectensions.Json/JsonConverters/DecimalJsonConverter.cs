@@ -1,33 +1,15 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Newtonsoft.Json;
 
 namespace doob.Reflectensions.JsonConverters {
     public class DecimalJsonConverter : JsonConverter {
 
-        public override bool CanRead => true;
+        public override bool CanRead => false;
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
-
-            var dec = reader.ReadAsString();
-            if (int.TryParse(dec, out int _int)) {
-                return _int;
-            }
-
-            if (long.TryParse(dec, out long _long))
-            {
-                return _int;
-            }
-
-            if (double.TryParse(dec, out double _double))
-            {
-                return _double;
-            }
-            
-            if (decimal.TryParse(dec, out var _deci)) {
-                return _deci;
-            }
-
-            return Convert.ChangeType(dec, objectType);
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
         }
 
         public override bool CanConvert(Type objectType) {
@@ -43,16 +25,19 @@ namespace doob.Reflectensions.JsonConverters {
         }
 
         private static bool IsWholeValue(object? value) {
-            if (value is decimal) {
-                decimal decimalValue = (decimal)value;
-                int precision = (Decimal.GetBits(decimalValue)[3] >> 16) & 0x000000FF;
-                return precision == 0;
-            } else if (value is float || value is double) {
-                double doubleValue = Convert.ToDouble(value);
-                return doubleValue == Math.Truncate(doubleValue);
+            switch (value)
+            {
+                case int:
+                    return true;
+                case decimal decimalValue:
+                    return decimalValue == Math.Round(decimalValue, 0, MidpointRounding.AwayFromZero);
+                case float floatValue:
+                    return floatValue == Math.Truncate(floatValue);
+                case double doubleValue:
+                    return doubleValue == Math.Truncate(doubleValue);
+                default:
+                    return false;
             }
-
-            return false;
         }
     }
 

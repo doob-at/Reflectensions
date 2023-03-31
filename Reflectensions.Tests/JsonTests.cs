@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using doob.Reflectensions.JsonConverters;
+using doob.Reflectensions.Tests.TestClasses;
 using Xunit;
 
 namespace doob.Reflectensions.Tests
@@ -62,8 +63,44 @@ namespace doob.Reflectensions.Tests
         }
         ]";
 
-           
+
             var arr = Json.Converter.ToObject<ExpandableObject[]>(json);
+        }
+
+        [Fact]
+        public void DecimalToJson()
+        {
+
+            var numberProps = new NumberProps();
+            numberProps.Decimal = 1.2m;
+            numberProps.Integer = 7;
+            numberProps.Double = 1.234;
+            numberProps.Float = 1.2345678f;
+            numberProps.Long = long.MaxValue;
+
+           
+
+            var jsonConv = new Json();
+
+            jsonConv.RegisterJsonConverter<DecimalJsonConverter>();
+
+            var json = jsonConv.ToJson(numberProps);
+
+
+        }
+
+        [Fact]
+        public void JsonToDecimal()
+        {
+
+            var jsonConv = new Json();
+
+            jsonConv.RegisterJsonConverter<DecimalJsonConverter>();
+
+            var json = "{\"Integer\":7,\"Double\":1.234,\"Float\":1.23456776,\"Long\":9223372036854775807,\"Decimal\":1.2}";
+            var obj = jsonConv.ToObject<NumberProps>(json);
+
+
         }
     }
 }
