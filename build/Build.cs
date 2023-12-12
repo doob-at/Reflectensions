@@ -33,8 +33,7 @@ class Build : NukeBuild
         .Before(Restore)
         .Executes(() =>
         {
-            Logger.Info(GitVersion.NuGetVersionV2);
-            EnsureCleanDirectory(OutputDirectory);
+            OutputDirectory.CreateOrCleanDirectory();
         });
 
     Target Restore => _ => _
@@ -88,7 +87,6 @@ class Build : NukeBuild
         .Executes(() =>
         {
             OutputDirectory.GlobFiles("*.nupkg")
-                .NotEmpty()
                 .Where(x => !x.ToString().EndsWith("symbols.nupkg"))
                 .ForEach(x =>
                 {
