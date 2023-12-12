@@ -300,7 +300,7 @@ namespace doob.Reflectensions.ExtensionMethods
 
             if (TypeHelper.HasInspectableBaseType(type))
             {
-                foreach (var baseTypeInterface in type.BaseType.GetInterfaces())
+                foreach (var baseTypeInterface in type.BaseType?.GetInterfaces() ?? Array.Empty<Type>())
                 {
                     childInterfaces.Add(baseTypeInterface);
                 }

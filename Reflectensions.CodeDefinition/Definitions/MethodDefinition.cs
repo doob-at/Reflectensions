@@ -10,8 +10,8 @@ namespace doob.Reflectensions.CodeDefinition.Definitions
     public class MethodDefinition
     {
         public Modifier? Modifier { get; set; }
-        public TypeDefinition ReturnType { get; set; }
-        public string Name { get; set; }
+        public TypeDefinition? ReturnType { get; set; }
+        public string Name { get; set; } = default!;
         public List<TypeDefinition> GenericArguments { get; set; } = new List<TypeDefinition>();
         public List<ParameterDefinition> Parameters { get; set; } = new List<ParameterDefinition>();
         public TypeDefinition DeclaringType { get; set; }
@@ -42,20 +42,20 @@ namespace doob.Reflectensions.CodeDefinition.Definitions
 
             var md = new MethodDefinition();
 
-            md.Name = match.Groups["name"]?.Value;
+            md.Name = match.Groups["name"]?.Value ?? default!;
 
             md.GenericArguments = match.Groups["genericArguments"]?.Value
                 .Split(',')
                 .Where(s => !String.IsNullOrWhiteSpace(s))
                 .Select(TypeDefinition.Parse)
-                .ToList();
+                .ToList() ?? new List<TypeDefinition>();
 
             var returnType = match.Groups["returnType"]?.Value.TrimToNull();
             md.ReturnType = returnType != null ? TypeDefinition.Parse(returnType) : null;
 
 
            md.Parameters = match.Groups["parameters"].Value.TrimToNull()?.SplitGenericArguments().Select(ParameterDefinition.Parse)
-                .ToList();
+                .ToList() ?? new List<ParameterDefinition>();
 
             return md;
         }

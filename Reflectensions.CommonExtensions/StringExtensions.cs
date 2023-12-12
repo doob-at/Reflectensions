@@ -39,6 +39,21 @@ namespace doob.Reflectensions.Common {
             return val;
         }
 
+        public static string RemoveEnd(this string value, int length)
+        {
+            return value.Substring(0, value.Length - length);
+        }
+
+        public static string RemoveEnd(this string value, string remove, bool ignoreCase = true)
+        {
+
+            if (value.EndsWith(remove, ignoreCase ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture))
+            {
+                return RemoveEnd(value, remove.Length);
+            }
+
+            return value;
+        }
         public static bool Match(this string value, string matchString, bool ignoreCase = true, bool invert = false)
         {
             return WildcardHelper.Match(value, matchString, ignoreCase, invert);

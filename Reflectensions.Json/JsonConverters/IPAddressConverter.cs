@@ -21,7 +21,7 @@ namespace doob.Reflectensions.JsonConverters
         public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             JToken token = JToken.Load(reader);
-            return IPAddress.Parse(token.Value<string>());
+            return IPAddress.Parse(token.Value<string>()!);
         }
     }
 }

@@ -4,7 +4,7 @@
     <TargetFrameworks>net7.0;netstandard2.0;net472</TargetFrameworks>
     <AssemblyName>doob.Reflectensions.CommonExtensions</AssemblyName>
     <RootNamespace>doob.Reflectensions.Common</RootNamespace>
-    <LangVersion>9</LangVersion>
+    <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions", "Reflectensions\Reflectensions.csproj", "{062F24ED-C13B-4C24-A642-FCB414A2471B}"
 EndProject
@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions.CommonExtens
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions.ExpandableObject", "Reflectensions.ExpandableObject\Reflectensions.ExpandableObject.csproj", "{C088EB9D-B83A-443E-AD31-19D3B711735F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflectensions.CodeDefinition", "Reflectensions.CodeDefinition\Reflectensions.CodeDefinition.csproj", "{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflectensions.CodeDefinition", "Reflectensions.CodeDefinition\Reflectensions.CodeDefinition.csproj", "{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflectensions.AspNetCore", "Reflectensions.AspNetCore\Reflectensions.AspNetCore.csproj", "{59C2C553-0D7B-4CBA-8942-7D4B869959DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ABBC5FF-1EAC-4759-8874-5420DCE503CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C2C553-0D7B-4CBA-8942-7D4B869959DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C2C553-0D7B-4CBA-8942-7D4B869959DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C2C553-0D7B-4CBA-8942-7D4B869959DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C2C553-0D7B-4CBA-8942-7D4B869959DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
