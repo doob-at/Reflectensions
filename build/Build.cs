@@ -87,9 +87,9 @@ class Build : NukeBuild
         .Requires(() => Configuration.Equals(Configuration.Release))
         .Executes(() =>
         {
-            GlobFiles(OutputDirectory, "*.nupkg")
+            OutputDirectory.GlobFiles("*.nupkg")
                 .NotEmpty()
-                .Where(x => !x.EndsWith("symbols.nupkg"))
+                .Where(x => !x.ToString().EndsWith("symbols.nupkg"))
                 .ForEach(x =>
                 {
                     var nugetPushSettings = new DotNetNuGetPushSettings()
